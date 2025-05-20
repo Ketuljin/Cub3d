@@ -3,20 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkerthe <jkerthe@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:08:35 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/05/20 11:11:03 by jkerthe          ###   ########.fr       */
+/*   Updated: 2025/05/20 12:42:28 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_h
-#define CUB3D_H
+# define CUB3D_H
 
-typedef struct s_struct
+# define SUCCESS 0
+# define FAILURE 1
+
+# define SCREEN_WIDTH 640
+# define SCREEN_HEIGHT 480
+
+# include <stdlib.h>
+# include "../minilibx-linux/mlx.h"
+
+typedef struct s_game
 {
-
-}				t_struct;
+	void	*mlx;
+	void	*win;
+}				t_game;
 
 
 
