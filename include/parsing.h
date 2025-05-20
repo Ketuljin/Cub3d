@@ -6,7 +6,7 @@
 /*   By: jkerthe <jkerthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:30:29 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/05/20 14:51:59 by jkerthe          ###   ########.fr       */
+/*   Updated: 2025/05/20 15:19:54 by jkerthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,10 @@ char	*ft_strchr(const char *string, int searchedChar );
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*stock_texture(char *stock, int i);
 void	search_for_texture(t_map *map, char *stock);
+void	search_for_east(t_map *map, char *stock);
+void	search_for_west(t_map *map, char *stock);
+void	search_for_south(t_map *map, char *stock);
+void	search_for_north(t_map *map, char *stock);
 
 
 #endif
