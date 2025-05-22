@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:08:35 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/05/20 12:42:28 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/05/20 15:47:45 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,37 @@
 # define SUCCESS 0
 # define FAILURE 1
 
-# define SCREEN_WIDTH 640
-# define SCREEN_HEIGHT 480
+# define WIN_WIDTH 640
+# define WIN_HEIGHT 480
 
+# include <stdio.h>
+# include <unistd.h>
 # include <stdlib.h>
+# include <fcntl.h>
+# include <stdbool.h>
 # include "../minilibx-linux/mlx.h"
+
+typedef struct s_map
+{
+	char	**content;
+	int		sizeL;
+	bool	valid_content;
+	char	*north;
+	char	*south;
+	char	*east;
+	char	*west;
+	char	*floor;
+	char	*ceiling;
+
+}				t_map;
 
 typedef struct s_game
 {
 	void	*mlx;
 	void	*win;
+	int		win_width;
+	int		win_heght;
+	t_map	*map;
 }				t_game;
-
-
-
 
 #endif
