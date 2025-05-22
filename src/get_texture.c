@@ -6,7 +6,7 @@
 /*   By: jkerthe <jkerthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 13:12:51 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/05/20 15:15:28 by jkerthe          ###   ########.fr       */
+/*   Updated: 2025/05/21 11:17:39 by jkerthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	search_for_north(t_map *map, char *stock)
 			if (map->north != NULL)
 				map->valid_content = false;
 			else
-				map->north = stock_texture(stock, i);
+				map->north = stock_texture(stock, i, map);
 		}
 		i++;
 	}
@@ -44,7 +44,7 @@ void	search_for_south(t_map *map, char *stock)
 			if (map->south != NULL)
 				map->valid_content = false;
 			else
-				map->south = stock_texture(stock, i);
+				map->south = stock_texture(stock, i, map);
 		}
 		i++;
 	}
@@ -63,13 +63,14 @@ void	search_for_west(t_map *map, char *stock)
 			if (map->west != NULL)
 				map->valid_content = false;
 			else
-				map->west = stock_texture(stock, i);
+				map->west = stock_texture(stock, i, map);	
 		}
 		i++;
 	}
 	if (map->west == NULL)
 		map->valid_content = false;
 }
+
 void	search_for_east(t_map *map, char *stock)
 {
 	int	i;
@@ -82,7 +83,7 @@ void	search_for_east(t_map *map, char *stock)
 			if (map->east != NULL)
 				map->valid_content = false;
 			else
-				map->east = stock_texture(stock, i);
+				map->east = stock_texture(stock, i, map);
 		}
 		i++;
 	}

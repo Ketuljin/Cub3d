@@ -1,0 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkerthe <jkerthe@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/20 10:27:52 by jkerthe           #+#    #+#             */
+/*   Updated: 2025/05/22 14:12:01 by jkerthe          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../include/parsing.h"
+
+char	*ft_strdup(const char *src )
+{
+	char			*dest;
+	size_t			i;
+
+	i = 0;
+	dest = (char *) malloc(sizeof(const char) * ft_strlen(src) +1);
+	if (dest == NULL)
+		return (NULL);
+	else
+	{
+		dest[ft_strlen(src)] = '\0';
+	}
+	while (src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	return (dest);
+}
+
