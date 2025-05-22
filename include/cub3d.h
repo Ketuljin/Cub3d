@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:08:35 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/05/20 15:47:45 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/05/22 13:36:23 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdbool.h>
+# include <X11/keysym.h>
 # include "../minilibx-linux/mlx.h"
 
 typedef struct s_map
@@ -40,13 +41,23 @@ typedef struct s_map
 
 }				t_map;
 
+typedef struct s_player
+{
+	char	dir;
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+}				t_player;
+
 typedef struct s_game
 {
-	void	*mlx;
-	void	*win;
-	int		win_width;
-	int		win_heght;
-	t_map	*map;
+	void		*mlx;
+	void		*win;
+	int			win_width;
+	int			win_heght;
+	t_map		*map;
+	t_player	*player;
 }				t_game;
 
 #endif
