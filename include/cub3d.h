@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:08:35 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/05/22 13:36:23 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/05/24 17:50:20 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,28 @@ typedef struct s_map
 	char	*west;
 	char	*floor;
 	char	*ceiling;
-
 }				t_map;
+
+typedef struct s_ray
+{
+	double	camera_x;
+	double	dir_x;
+	double	dir_y;
+	int		map_x;
+	int		map_y;
+	int		step_x;
+	int		step_y;
+	double	sidedist_x;
+	double	sidedist_y;
+	double	deltadist_x;
+	double	deltadist_y;
+	double	wall_dist;
+	double	wall_x;
+	int		side;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+}				t_ray;
 
 typedef struct s_player
 {
@@ -48,6 +68,12 @@ typedef struct s_player
 	double	pos_y;
 	double	dir_x;
 	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+	int		has_moved;
+	int		move_x;
+	int		move_y;
+	int		rotate;
 }				t_player;
 
 typedef struct s_game
@@ -56,8 +82,10 @@ typedef struct s_game
 	void		*win;
 	int			win_width;
 	int			win_heght;
-	t_map		*map;
-	t_player	*player;
+	t_map		map;
+	char		**map;
+	t_ray		ray;
+	t_player	player;
 }				t_game;
 
 #endif
