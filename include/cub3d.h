@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:08:35 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/05/24 17:50:20 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/05/24 18:17:38 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ typedef struct s_game
 	void		*win;
 	int			win_width;
 	int			win_heght;
-	t_map		map;
+	t_map		mapinfo;
 	char		**map;
 	t_ray		ray;
 	t_player	player;
