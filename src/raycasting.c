@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 10:59:59 by rureshet          #+#    #+#             */
-/*   Updated: 2025/05/26 20:55:14 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/05/26 21:26:17 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ int	raycasting(t_player *player, t_game *game)
 	while (x < game->win_width)
 	{
 		init_raycasting_info(x, &ray, player);
+		set_dda(&ray, player);
+		make_dda(game, &ray);
 		x++;
 	}
 	return (SUCCESS);
