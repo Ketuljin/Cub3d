@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:08:35 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/05/24 18:17:38 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/05/26 12:38:06 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdbool.h>
+# include <math.h>
 # include <X11/keysym.h>
 # include "../minilibx-linux/mlx.h"
 
@@ -87,5 +88,11 @@ typedef struct s_game
 	t_ray		ray;
 	t_player	player;
 }				t_game;
+
+/* init_data.c*/
+void	init_ray(t_ray *ray);
+void	init_player(t_player *player);
+void	init_map(t_map *mapinfo);
+void	init_game(t_game *game);
 
 #endif
