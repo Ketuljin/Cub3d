@@ -6,7 +6,7 @@
 /*   By: jkerthe <jkerthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 11:14:33 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/05/22 12:37:30 by jkerthe          ###   ########.fr       */
+/*   Updated: 2025/05/26 14:12:35 by jkerthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void alloc_line(t_map *map, char *stock)
 			map->content[line] = malloc((len + 1) * sizeof(char));
 			if (!map->content[line])
 				return;
+			map->content[line][len] = '\0';
 			line++;
 			len = 0;
 		} else {
@@ -65,7 +66,10 @@ void alloc_line(t_map *map, char *stock)
 		map->content[line] = malloc((len + 1) * sizeof(char));
 		if (!map->content[line])
 			return;
+		map->content[line][len] = '\0';
+		line++;
 	}
+	map->sizeL = line;
 }
 
 

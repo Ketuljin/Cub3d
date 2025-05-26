@@ -6,7 +6,7 @@
 /*   By: jkerthe <jkerthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:30:29 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/05/22 14:12:13 by jkerthe          ###   ########.fr       */
+/*   Updated: 2025/05/26 13:12:37 by jkerthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ typedef struct s_map
 	char	*ceiling; //ceiling basic
 	int		ceiling_color; //ceiling convert
 	char	initial_position; //Where he is looking at N : North S : South E : East W:West
-	int		initial_posX;
-	int		initial_posY;
 	int		i;
 
 }				t_map;	
@@ -63,6 +61,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strdup(const char *src );
 void	search_for_map(t_map *map, char *stock);
 void	verif_map(t_map *map);
+void	wall_around(t_map *map, int y, int i);
 
 
 #endif

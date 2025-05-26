@@ -6,7 +6,7 @@
 /*   By: jkerthe <jkerthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 12:06:25 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/05/22 14:09:52 by jkerthe          ###   ########.fr       */
+/*   Updated: 2025/05/26 14:07:08 by jkerthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,9 @@ int	verif_floor_ceiling(char *color)
 void	init_content(t_map *map, int fd)
 {
 	char	*stock;
+	int		y;
+
+	y = 0;
 
 	stock = full_line(fd);
 	init_map(map);
@@ -102,6 +105,11 @@ void	init_content(t_map *map, int fd)
 	verif_map(map);
 	if (map->valid_content == false)
 		printf("PAS BON DUTOUT \n");
+	while (y < map->sizeL)
+	{
+		printf("%s\n", map->content[y]);
+		y++;
+	}
 	free_all(map);
 	free_malloc(map->content, map->sizeL);
 	free(stock);
