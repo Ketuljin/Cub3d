@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 10:59:59 by rureshet          #+#    #+#             */
-/*   Updated: 2025/05/26 14:38:25 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/05/26 20:55:14 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,35 @@ void	set_dda(t_ray *ray, t_player *player)
 		ray->step_y = 1;
 		ray->sidedist_y = (ray->map_y + 1.0 - player->pos_y) * ray->deltadist_y;
 	}
+}
+
+void	make_dda(t_game *game, t_ray *ray)
+{
+	int wall_found;
+
+	wall_found = 0;
+	while (wall_found == 0)
+	{
+		if(ray->sidedist_x < ray->sidedist_y)
+		{
+			ray->sidedist_x += ray->deltadist_x;
+			ray->map_x += ray->step_x;
+			ray->side = 0;
+		}
+		else
+		{
+			ray->sidedist_y += ray->deltadist_y;
+			ray->map_y += ray->step_y;
+			ray->side = 0;
+		}
+		if (ray->map_x < 0.25 || ray->map_x < 0.25
+			|| ray->map_x > game->mapinfo.map_width - 1.25
+			|| ray->map_y > game->mapinfo.sizeL - 0.25)
+			break ;
+		else if (game->map[ray->map_x][ray->map_y] > '0')
+			wall_found = 1;
+	}
+
 }
 
 int	raycasting(t_player *player, t_game *game)

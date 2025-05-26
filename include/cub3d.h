@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:08:35 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/05/26 12:38:06 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/05/26 20:42:54 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,10 @@ typedef struct s_map
 	char	*west;
 	char	*floor;
 	char	*ceiling;
+	char	initial_position; //Where he is looking at N : North S : South E : East W:West
+	int		initial_posX;
+	int		initial_posY;
+	int		map_width;
 }				t_map;
 
 typedef struct s_ray

@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:16:53 by rureshet          #+#    #+#             */
-/*   Updated: 2025/05/26 11:05:45 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/05/26 21:22:01 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	init_mlx(t_game *game)
 		return(FAILURE);
 	mlx_hook(game->win, 17, 0, close_game, &game);
 	mlx_hook(game->win, 2, 1L<<0, key_press_handle, game);
-	mlx_loop(game->mlx);
+
 	return(SUCCESS);
 }
 
@@ -61,5 +61,6 @@ int	main(int argc, char **argv)
 	init_game(&game);
 	if(init_mlx(&game) == FAILURE)
 		return (FAILURE);
+	mlx_loop(game.mlx);
 	return(SUCCESS);
 }
