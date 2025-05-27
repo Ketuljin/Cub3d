@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:08:35 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/05/26 20:42:54 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/05/27 18:29:17 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,8 @@ void	init_ray(t_ray *ray);
 void	init_player(t_player *player);
 void	init_map(t_map *mapinfo);
 void	init_game(t_game *game);
+
+/* raycasting.c*/
+int	raycasting(t_player *player, t_game *game);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 10:59:59 by rureshet          #+#    #+#             */
-/*   Updated: 2025/05/26 21:26:17 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/05/27 18:35:18 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,26 @@ void	make_dda(t_game *game, t_ray *ray)
 		else if (game->map[ray->map_x][ray->map_y] > '0')
 			wall_found = 1;
 	}
+}
+
+void	line_height(t_ray *ray, t_game *game, t_player *player)
+{
+	if (ray->side = 0)
+		ray->wall_dist = ray->sidedist_x - ray->deltadist_x;
+	else
+		ray->wall_dist = ray->sidedist_y - ray->deltadist_y;
+	ray->line_height = (game->win_heght / ray->wall_dist);
+	ray->draw_start = -(ray->line_height) / 2 + game->win_heght / 2;
+	if (ray->draw_start < 0)
+		ray->draw_start = 0;
+	ray->draw_end = ray->line_height / 2 + game->win_heght / 2;
+	if (ray->draw_end >= game->win_heght)
+		ray->draw_end = game->win_heght -1;
+	if (ray->side == 0)
+		ray->wall_x = player->pos_y + ray->wall_dist * ray->dir_y;
+	else
+		ray->wall_x = player->pos_x + ray->wall_dist * ray->dir_x;
+	ray->wall_x -= floor(ray->wall_x);
 
 }
 
@@ -89,6 +109,7 @@ int	raycasting(t_player *player, t_game *game)
 		init_raycasting_info(x, &ray, player);
 		set_dda(&ray, player);
 		make_dda(game, &ray);
+		line_height(&ray, game, player);
 		x++;
 	}
 	return (SUCCESS);

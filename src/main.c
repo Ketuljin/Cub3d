@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:16:53 by rureshet          #+#    #+#             */
-/*   Updated: 2025/05/26 21:22:01 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/05/27 17:34:26 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,10 @@ int	main(int argc, char **argv)
 	t_game game;
 
 	init_game(&game);
+
 	if(init_mlx(&game) == FAILURE)
 		return (FAILURE);
+	raycasting(&game.player, &game);
 	mlx_loop(game.mlx);
 	return(SUCCESS);
 }
