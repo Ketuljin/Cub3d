@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:29:42 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/05/27 19:00:04 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/05/27 21:21:38 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,10 @@ int	check_name(char *argv)
 
 int	main(int argc, char **argv)
 {
-	int		fd;
-	t_map	map;
-	t_game	game;
+	int			fd;
+	t_map		map;
+	t_game		game;
+	t_player	player;
 
 	fd = 0;
 	if (argc != 2)
@@ -118,10 +119,11 @@ int	main(int argc, char **argv)
 		init_content(&map, fd);
 	}
 	init_game(&game);
-
+	init_player_direction(&player, &map);
 	if(init_mlx(&game) == FAILURE)
 		return (FAILURE);
-	raycasting(&game.player, &game);
+	raycasting(&player, &game);
+	display_structures(&game.mapinfo, &game.ray, &game.player);
 	mlx_loop(game.mlx);
 	return(SUCCESS);
 }

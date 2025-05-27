@@ -6,14 +6,15 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 13:03:04 by rureshet          #+#    #+#             */
-/*   Updated: 2025/05/26 13:16:24 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/05/27 21:07:50 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	init_player_direction(t_player *player)
+void	init_player_direction(t_player *player, t_map *map)
 {
+	player->dir = map->initial_position;
 	if (player->dir == 'N')
 	{
 		player->dir_x = 0;

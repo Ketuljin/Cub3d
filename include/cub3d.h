@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:08:35 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/05/27 18:59:16 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/05/27 21:07:58 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,5 +151,11 @@ char	*ft_strdup(const char *src );
 void	search_for_map(t_map *map, char *stock);
 void	verif_map(t_map *map);
 void	wall_around(t_map *map, int y, int i);
+
+
+void	init_player_direction(t_player *player, t_map *map);
+
+/*   DELETE THIS   */
+void display_structures(t_map *map, t_ray *ray, t_player *player);
 
 #endif
