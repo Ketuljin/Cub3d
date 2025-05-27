@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 11:04:52 by rureshet          #+#    #+#             */
-/*   Updated: 2025/05/26 11:05:47 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/05/27 19:05:27 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,27 +48,27 @@ void	init_player(t_player *player)
 	player->rotate = 0;
 }
 
-void	init_map(t_map *mapinfo)
-{
-	char *content_test[] = {
-		"11111",
-		"10001",
-		"1N011",
-		"10001",
-		"11111",
-		NULL
-	};
+// void	init_map(t_map *mapinfo)
+// {
+// 	char *content_test[] = {
+// 		"11111",
+// 		"10001",
+// 		"1N011",
+// 		"10001",
+// 		"11111",
+// 		NULL
+// 	};
 
-	mapinfo->content = content_test;
-	mapinfo->sizeL = 0;
-	mapinfo->valid_content = true;
-	mapinfo->north = NULL;
-	mapinfo->south = NULL;
-	mapinfo->east = NULL;
-	mapinfo->west = NULL;
-	mapinfo->floor = NULL;
-	mapinfo->ceiling = NULL;
-}
+// 	mapinfo->content = content_test;
+// 	mapinfo->sizeL = 0;
+// 	mapinfo->valid_content = true;
+// 	mapinfo->north = NULL;
+// 	mapinfo->south = NULL;
+// 	mapinfo->east = NULL;
+// 	mapinfo->west = NULL;
+// 	mapinfo->floor = NULL;
+// 	mapinfo->ceiling = NULL;
+// }
 
 void	init_game(t_game *game)
 {

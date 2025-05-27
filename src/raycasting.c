@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 10:59:59 by rureshet          #+#    #+#             */
-/*   Updated: 2025/05/27 18:35:18 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/05/27 19:00:43 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	make_dda(t_game *game, t_ray *ray)
 
 void	line_height(t_ray *ray, t_game *game, t_player *player)
 {
-	if (ray->side = 0)
+	if (ray->side == 0)
 		ray->wall_dist = ray->sidedist_x - ray->deltadist_x;
 	else
 		ray->wall_dist = ray->sidedist_y - ray->deltadist_y;
