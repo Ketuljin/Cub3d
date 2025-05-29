@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:08:35 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/05/29 19:42:27 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/05/29 21:01:24 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # define WIN_WIDTH 640
 # define WIN_HEIGHT 480
 
-
 # define BUFFER_SIZE 15
+# define TEX_SIZE 64
 
 # include <stdio.h>
 # include <unistd.h>
@@ -32,9 +32,24 @@
 # include <X11/keysym.h>
 # include "../minilibx-linux/mlx.h"
 
+enum e_texture_indexes
+{
+	NORTH = 0,
+	SOUTH = 1,
+	EAST = 2,
+	WEST = 3
+};
 
+typedef struct	s_img
+{
+	void	*img;
+	int		*addr;
+	int		pixel_bits;
+	int		size_line;
+	int		endian;
+}				t_img;
 
-typedef struct s_map
+typedef struct	s_map
 {
 	char	**content;
 	int		sizeL;
@@ -50,11 +65,17 @@ typedef struct s_map
 	char	initial_position; //Where he is looking at N : North S : South E : East W:West
 	int		initial_posX;
 	int		initial_posY;
+	int		index;
+	int		size;
+	double	step;
+	double	pos;
+	int		x;
+	int		y;
 	int		map_width;
 	int		i;
 }				t_map;
 
-typedef struct s_ray
+typedef struct	s_ray
 {
 	double	camera_x;
 	double	dir_x;
@@ -75,7 +96,7 @@ typedef struct s_ray
 	int		draw_end;
 }				t_ray;
 
-typedef struct s_player
+typedef struct	s_player
 {
 	char	dir;
 	double	pos_x;
@@ -90,7 +111,7 @@ typedef struct s_player
 	int		rotate;
 }				t_player;
 
-typedef struct s_game
+typedef struct	s_game
 {
 	void		*mlx;
 	void		*win;

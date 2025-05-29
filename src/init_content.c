@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 12:06:25 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/05/29 15:59:26 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/05/29 21:02:09 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,12 @@ void	init_map(t_map *map)
 	map->initial_position = 'N';
 	map->initial_posX = 2;
 	map->initial_posY = 1;
+	map->index = 0;
+	map->size = TEX_SIZE;
+	map->step = 0.0;
+	map->pos = 0.0;
+	map->x = 0;
+	map->y = 0;
 	map->map_width = 5;
 	map->sizeL = lines;
 	map->i = 0;
