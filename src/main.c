@@ -6,20 +6,12 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:29:42 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/05/27 21:21:38 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/05/29 19:17:39 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/parsing.h"
 #include "../include/cub3d.h"
-
-int	close_game(t_game *game)
-{
-	mlx_destroy_window(game->mlx, game->win);
-	exit(0);
-	return(SUCCESS);
-}
-
 
 int	key_press_handle(int key, t_game *game)
 {
@@ -47,7 +39,7 @@ int	init_mlx(t_game *game)
 	game->win = mlx_new_window(game->mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3D");
 	if (!game->win)
 		return(FAILURE);
-	mlx_hook(game->win, 17, 0, close_game, &game);
+	mlx_hook(game->win, 17, 0, exit_game, &game);
 	mlx_hook(game->win, 2, 1L<<0, key_press_handle, game);
 
 	return(SUCCESS);
@@ -98,9 +90,7 @@ int	check_name(char *argv)
 int	main(int argc, char **argv)
 {
 	int			fd;
-	t_map		map;
 	t_game		game;
-	t_player	player;
 
 	fd = 0;
 	if (argc != 2)
@@ -116,14 +106,14 @@ int	main(int argc, char **argv)
 			printf("ERROR\n Wrong name");
 			return (1);
 		}
-		init_content(&map, fd);
+		init_content(&game.mapinfo, fd);
 	}
 	init_game(&game);
-	init_player_direction(&player, &map);
+	init_player_direction(&game.player, &game.mapinfo);
 	if(init_mlx(&game) == FAILURE)
 		return (FAILURE);
-	raycasting(&player, &game);
-	display_structures(&game.mapinfo, &game.ray, &game.player);
+	render_raycast(&game);
+	print_game_state(&game); // DELETE THIS - NEED FOR TEST
 	mlx_loop(game.mlx);
 	return(SUCCESS);
 }

@@ -6,11 +6,11 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:08:35 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/05/27 21:07:58 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/05/29 19:42:27 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_h
+#ifndef CUB3D_H
 # define CUB3D_H
 
 # define SUCCESS 0
@@ -25,11 +25,14 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <string.h>
 # include <fcntl.h>
 # include <stdbool.h>
 # include <math.h>
 # include <X11/keysym.h>
 # include "../minilibx-linux/mlx.h"
+
+
 
 typedef struct s_map
 {
@@ -41,9 +44,9 @@ typedef struct s_map
 	char	*east;
 	char	*west;
 	char	*floor; //floor bacic
-	int		floor_color; //floor convert
+	long	floor_color; //floor convert
 	char	*ceiling; //ceiling basic
-	int		ceiling_color; //ceiling convert
+	long	ceiling_color; //ceiling convert
 	char	initial_position; //Where he is looking at N : North S : South E : East W:West
 	int		initial_posX;
 	int		initial_posY;
@@ -97,18 +100,33 @@ typedef struct s_game
 	char		**map;
 	t_ray		ray;
 	t_player	player;
+	int			**textures;
+	int			**texture_pixels;
 }				t_game;
 
 /* init_data.c*/
 void	init_ray(t_ray *ray);
-void	init_player(t_player *player);
+void	init_player(t_player *player, t_map *map);
 void	init_map(t_map *mapinfo);
 void	init_game(t_game *game);
 
 /* raycasting.c*/
-int	raycasting(t_player *player, t_game *game);
+int		raycasting(t_player *player, t_game *game);
+void	render_raycast(t_game *game);
 
 
+/*   free_game.c   */
+void	free_malloc(char **stockf, int l);
+void	free_tab(void **tab);
+void	free_map(t_map *map);
+void	free_game(t_game *game);
+
+/*   exit.c   */
+int		exit_game(t_game *game);
+void	clean_exit(t_game *game, int code);
+
+/*   init_textures.c   */
+void	init_texture_pixels(t_game *game);
 
 /*typedef struct s_map
 {
@@ -156,6 +174,6 @@ void	wall_around(t_map *map, int y, int i);
 void	init_player_direction(t_player *player, t_map *map);
 
 /*   DELETE THIS   */
-void display_structures(t_map *map, t_ray *ray, t_player *player);
+void	print_game_state(t_game *game);
 
 #endif

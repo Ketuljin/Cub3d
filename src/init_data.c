@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 11:04:52 by rureshet          #+#    #+#             */
-/*   Updated: 2025/05/27 21:17:48 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/05/29 19:19:51 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ void	init_ray(t_ray *ray)
 	ray->draw_end = 0;
 }
 
-void	init_player(t_player *player)
+void	init_player(t_player *player, t_map *map)
 {
-	player->dir = '\0';
-	player->pos_x = 0.0;
-	player->pos_y = 0.0;
+	player->dir = map->initial_position;
+	player->pos_x = map->initial_posX + 0.5;
+	player->pos_y = map->initial_posY + 0.5;
 	player->dir_x = 0.0;
 	player->dir_y = 0.0;
 	player->plane_x = 0.0;
@@ -77,7 +77,9 @@ void	init_game(t_game *game)
 	game->win_width = WIN_WIDTH;
 	game->win_heght = WIN_HEIGHT;
 	init_map(&game->mapinfo);
-	init_player(&game->player);
+	init_player(&game->player, &game->mapinfo);
 	init_ray(&game->ray);
 	game->map = NULL;
+	game->texture_pixels = NULL;
+	game->textures = NULL;
 }

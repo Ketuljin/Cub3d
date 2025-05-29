@@ -2,94 +2,46 @@
 #include <stdbool.h>
 #include "../include/cub3d.h"
 
-void display_map_content(t_map *map)
+void	print_game_state(t_game *game)
 {
-    printf("=== MAP STRUCTURE ===\n");
-    printf("sizeL: %d\n", map->sizeL);
-    printf("valid_content: %s\n", map->valid_content ? "true" : "false");
-    printf("north: %s\n", map->north ? map->north : "NULL");
-    printf("south: %s\n", map->south ? map->south : "NULL");
-    printf("east: %s\n", map->east ? map->east : "NULL");
-    printf("west: %s\n", map->west ? map->west : "NULL");
-    printf("floor: %s\n", map->floor ? map->floor : "NULL");
-    printf("floor_color: %d\n", map->floor_color);
-    printf("ceiling: %s\n", map->ceiling ? map->ceiling : "NULL");
-    printf("ceiling_color: %d\n", map->ceiling_color);
-    printf("initial_position: %c\n", map->initial_position);
-    printf("initial_posX: %d\n", map->initial_posX);
-    printf("initial_posY: %d\n", map->initial_posY);
-    printf("map_width: %d\n", map->map_width);
-    printf("i: %d\n", map->i);
+	printf("win_width: %d\n", game->win_width);
+	printf("=== Map Info ===\n");
+	printf("SizeL: %d\n", game->mapinfo.sizeL);
+	printf("Valid Content: %s\n", game->mapinfo.valid_content ? "true" : "false");
+	printf("North: %s\n", game->mapinfo.north);
+	printf("South: %s\n", game->mapinfo.south);
+	printf("East: %s\n", game->mapinfo.east);
+	printf("West: %s\n", game->mapinfo.west);
+	printf("Floor: %s\n", game->mapinfo.floor);
+	printf("Floor Color: #%lx\n", game->mapinfo.floor_color);
+	printf("Ceiling: %s\n", game->mapinfo.ceiling);
+	printf("Ceiling Color: #%lx\n", game->mapinfo.ceiling_color);
+	printf("Initial Position: %c at (%d, %d)\n", game->mapinfo.initial_position, game->mapinfo.initial_posX, game->mapinfo.initial_posY);
+	printf("Map Width: %d, i: %d\n", game->mapinfo.map_width, game->mapinfo.i);
 
-    // printf("\nMap content:\n");
-    // if (map->content)
-    // {
-    //     for (int i = 0; map->content[i]; i++)
-    //     {
-    //         printf("%s\n", map->content[i]);
-    //     }
-    // }
-    // else
-    // {
-    //     printf("NULL\n");
-    // }
-    printf("=====================\n\n");
-}
+	if (game->mapinfo.content)
+	{
+		printf("Map Content:\n");
+		for (int i = 0; game->mapinfo.content[i]; i++)
+			printf("%s\n", game->mapinfo.content[i]);
+	}
 
-void display_ray_content(t_ray *ray)
-{
-    printf("=== RAY STRUCTURE ===\n");
-    printf("camera_x: %f\n", ray->camera_x);
-    printf("dir_x: %f\n", ray->dir_x);
-    printf("dir_y: %f\n", ray->dir_y);
-    printf("map_x: %d\n", ray->map_x);
-    printf("map_y: %d\n", ray->map_y);
-    printf("step_x: %d\n", ray->step_x);
-    printf("step_y: %d\n", ray->step_y);
-    printf("sidedist_x: %f\n", ray->sidedist_x);
-    printf("sidedist_y: %f\n", ray->sidedist_y);
-    printf("deltadist_x: %f\n", ray->deltadist_x);
-    printf("deltadist_y: %f\n", ray->deltadist_y);
-    printf("wall_dist: %f\n", ray->wall_dist);
-    printf("wall_x: %f\n", ray->wall_x);
-    printf("side: %d\n", ray->side);
-    printf("line_height: %d\n", ray->line_height);
-    printf("draw_start: %d\n", ray->draw_start);
-    printf("draw_end: %d\n", ray->draw_end);
-    printf("=====================\n\n");
-}
+	printf("\n=== Player Info ===\n");
+	printf("Direction: %c\n", game->player.dir);
+	printf("Position: (%.2f, %.2f)\n", game->player.pos_x, game->player.pos_y);
+	printf("Direction Vector: (%.2f, %.2f)\n", game->player.dir_x, game->player.dir_y);
+	printf("Plane Vector: (%.2f, %.2f)\n", game->player.plane_x, game->player.plane_y);
+	printf("Has Moved: %d, Move X: %d, Move Y: %d, Rotate: %d\n",
+		game->player.has_moved, game->player.move_x, game->player.move_y, game->player.rotate);
 
-void display_player_content(t_player *player)
-{
-    printf("=== PLAYER STRUCTURE ===\n");
-    printf("dir: %c\n", player->dir);
-    printf("pos_x: %f\n", player->pos_x);
-    printf("pos_y: %f\n", player->pos_y);
-    printf("dir_x: %f\n", player->dir_x);
-    printf("dir_y: %f\n", player->dir_y);
-    printf("plane_x: %f\n", player->plane_x);
-    printf("plane_y: %f\n", player->plane_y);
-    printf("has_moved: %d\n", player->has_moved);
-    printf("move_x: %d\n", player->move_x);
-    printf("move_y: %d\n", player->move_y);
-    printf("rotate: %d\n", player->rotate);
-    printf("=======================\n\n");
-}
-
-void display_structures(t_map *map, t_ray *ray, t_player *player)
-{
-    if (map)
-        display_map_content(map);
-    else
-        printf("Map structure is NULL\n");
-
-    if (ray)
-        display_ray_content(ray);
-    else
-        printf("Ray structure is NULL\n");
-
-    if (player)
-        display_player_content(player);
-    else
-        printf("Player structure is NULL\n");
+	printf("\n=== Ray Info ===\n");
+	printf("Camera X: %.2f\n", game->ray.camera_x);
+	printf("Ray Dir: (%.2f, %.2f)\n", game->ray.dir_x, game->ray.dir_y);
+	printf("Map Pos: (%d, %d)\n", game->ray.map_x, game->ray.map_y);
+	printf("Step: (%d, %d)\n", game->ray.step_x, game->ray.step_y);
+	printf("Side Dist: (%.2f, %.2f)\n", game->ray.sidedist_x, game->ray.sidedist_y);
+	printf("Delta Dist: (%.2f, %.2f)\n", game->ray.deltadist_x, game->ray.deltadist_y);
+	printf("Wall Dist: %.2f, Wall X: %.2f\n", game->ray.wall_dist, game->ray.wall_x);
+	printf("Side: %d, Line Height: %d, Draw Start: %d, Draw End: %d\n",
+		game->ray.side, game->ray.line_height, game->ray.draw_start, game->ray.draw_end);
 }

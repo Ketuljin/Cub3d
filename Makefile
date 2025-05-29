@@ -6,12 +6,12 @@
 #    By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/20 07:51:49 by jkerthe           #+#    #+#              #
-#    Updated: 2025/05/27 18:43:12 by rureshet         ###   ########.fr        #
+#    Updated: 2025/05/29 17:49:36 by rureshet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-NAME = cub3d
+NAME = cub3D
 
 CC = gcc
 CFLAGS  = -Wall -Wextra -Werror

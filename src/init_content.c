@@ -6,62 +6,92 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 12:06:25 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/05/27 21:03:18 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/05/29 15:59:26 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/parsing.h"
 #include "../include/cub3d.h"
 
-void	free_malloc(char **stockf, int l)
-{
-	int	y;
 
-	y = 0;
-	while (y < l)
-	{
-		free (stockf[y]);
-		y++;
-	}
-	free (stockf);
-}
 
 void	init_map(t_map *map)
 {
-	map->ceiling = NULL;
-	map->north = NULL;
-	map->content = NULL;
-	map->east = NULL;
-	map->south = NULL;
+	const char	*content_test[] = {
+		"11111",
+		"10001",
+		"1N011",
+		"10001",
+		"11111",
+		NULL
+	};
+	int	lines;
+	int	i;
+
+	lines = 0;
+	while (content_test[lines])
+		lines++;
+
+	map->content = malloc(sizeof(char *) * (lines + 1));
+	if (!map->content)
+		return;
+	i = 0;
+	while (i < lines)
+	{
+		map->content[i] = strdup(content_test[i]);
+		i++;
+	}
+	map->content[lines] = NULL;
+
+	map->north = "textures/wolfenstein/colorstone.xpm";
+	map->east = "textures/wolfenstein/redbrick.xpm";
+	map->south = "textures/wolfenstein/wood.xpm";
+	map->west = "textures/wolfenstein/mossy.xpm";
+
 	map->floor = NULL;
-	map->west = NULL;
+	map->floor_color = 0xDC6400;
+	map->ceiling = NULL;
+	map->ceiling_color = 0xE11E00;
+
 	map->valid_content = true;
-	map->initial_position = '1';
+	map->initial_position = 'N';
+	map->initial_posX = 2;
+	map->initial_posY = 1;
+	map->map_width = 5;
+	map->sizeL = lines;
 	map->i = 0;
 }
 
-void	free_all(t_map *map)
-{
-	free(map->ceiling);
-	free(map->north);
-	free(map->east);
-	free(map->south);
-	free(map->floor);
-	free(map->west);
-}
+// void	init_map(t_map *map)
+// {
+// 	map->north = NULL;
+// 	map->content = NULL;
+// 	map->east = NULL;
+// 	map->south = NULL;
+// 	map->floor = NULL;
+// 	map->floor_color = 0;
+// 	map->ceiling = NULL;
+// 	map->ceiling_color = 0;
+// 	map->west = NULL;
+// 	map->valid_content = true;
+// 	map->initial_position = '1';
+// 	map->i = 0;
+// }
+
+
 
 void	verif_file(t_map *map)
 {
-	if (map->content == false)
+	if (map->valid_content == false)
 		return ;
 	if (access(map->north, R_OK) != 0)
-		map->content = false;
+		map->valid_content = false;
 	if (access(map->south, R_OK) != 0)
-		map->content = false;
+		map->valid_content = false;
 	if (access(map->east, R_OK) != 0)
-		map->content = false;
+		map->valid_content = false;
 	if (access(map->west, R_OK) != 0)
-		map->content = false;
+		map->valid_content = false;
 	return ;
 }
 
@@ -99,7 +129,7 @@ void	init_content(t_map *map, int fd)
 		map->floor_color == -1)
 	{
 		free (stock);
-		free_all(map);
+		// free_map(map);
 		return ;
 	}
 	search_for_map(map, stock);
@@ -111,8 +141,7 @@ void	init_content(t_map *map, int fd)
 		printf("%s\n", map->content[y]);
 		y++;
 	}
-	free_all(map);
+	free_map(map);
 	free_malloc(map->content, map->sizeL);
 	free(stock);
-
 }
