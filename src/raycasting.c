@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 10:59:59 by rureshet          #+#    #+#             */
-/*   Updated: 2025/05/29 19:21:19 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/05/30 18:56:46 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ int	raycasting(t_player *player, t_game *game)
 		set_dda(&game->ray, player);
 		make_dda(game, &ray);
 		line_height(&game->ray, game, player);
+		update_texture_pixels(game, &game->mapinfo, &ray, x);
 		x++;
 	}
 	return (SUCCESS);
