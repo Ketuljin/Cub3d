@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 10:59:59 by rureshet          #+#    #+#             */
-/*   Updated: 2025/05/30 18:56:46 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/05/31 20:10:55 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,4 +120,5 @@ void	render_raycast(t_game *game)
 	init_texture_pixels(game);
 	init_ray(&game->ray);
 	raycasting(&game->player, game);
+	render_frame(game);
 }
