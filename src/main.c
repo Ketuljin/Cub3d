@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:29:42 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/05/29 19:17:39 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/01 16:08:53 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ int	main(int argc, char **argv)
 	init_player_direction(&game.player, &game.mapinfo);
 	if(init_mlx(&game) == FAILURE)
 		return (FAILURE);
+	init_textutes(&game);
 	render_raycast(&game);
 	print_game_state(&game); // DELETE THIS - NEED FOR TEST
 	mlx_loop(game.mlx);

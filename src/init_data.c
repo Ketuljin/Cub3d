@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 11:04:52 by rureshet          #+#    #+#             */
-/*   Updated: 2025/05/31 18:25:37 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/01 19:28:08 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	init_ray(t_ray *ray)
 	ray->camera_x = 0;
 	ray->dir_x = 0;
 	ray->dir_y = 0;
-	ray->map_x = 0;
-	ray->map_y = 0;
+	ray->map_x = 4;
+	ray->map_y = 4;
 	ray->step_x = 0;
 	ray->step_y = 0;
 	ray->sidedist_x = 0;

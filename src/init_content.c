@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 12:06:25 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/05/31 20:55:12 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/01 19:34:19 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,13 @@
 void	init_map(t_map *map)
 {
 	const char	*content_test[] = {
-		"11111",
-		"10001",
-		"1N011",
-		"10001",
-		"11111",
+		"11111111111",
+		"10000000001",
+		"10000000001",
+		"10000000001",
+		"1000E000011",
+		"10000000001",
+		"11111111111",
 		NULL
 	};
 	int	lines;
@@ -54,16 +56,16 @@ void	init_map(t_map *map)
 	map->ceiling_color = 0xE11E00;
 
 	map->valid_content = true;
-	map->initial_position = 'N';
-	map->initial_posX = 2;
-	map->initial_posY = 1;
+	map->initial_position = 'E';
+	map->initial_posX = 4;
+	map->initial_posY = 2;
 	map->index = 0;
 	map->size = TEX_SIZE;
 	map->step = 0.0;
 	map->pos = 0.0;
 	map->x = 0;
 	map->y = 0;
-	map->map_width = 5;
+	map->map_width = ft_strlen(content_test[0]); 
 	map->sizeL = lines;
 	map->i = 0;
 }

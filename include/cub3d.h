@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:08:35 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/05/31 20:10:34 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/01 16:08:33 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,8 +151,13 @@ void	clean_exit(t_game *game, int code);
 void	update_texture_pixels(t_game *game, t_map *map, t_ray *ray, int x);
 void	init_texture_pixels(t_game *game);
 
+/*   render_texture.c   */
+void	init_texture_image(t_game *game, t_img *img, char *path);
+void	init_textutes(t_game *game);
+
 /*   render_frame.c   */
 void	render_frame(t_game *game);
+
 
 /*typedef struct s_map
 {

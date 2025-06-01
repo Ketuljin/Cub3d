@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 16:51:10 by rureshet          #+#    #+#             */
-/*   Updated: 2025/05/30 18:55:43 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/01 17:48:05 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	update_texture_pixels(t_game *game, t_map *map, t_ray *ray, int x)
 		map->x = map->size - map->x - 1;
 	map->step = 1.0 * map->size / ray->line_height;
 	map->pos = (ray->draw_start - game->win_heght / 2 + ray->line_height / 2) * map->step;
-	y =  ray->draw_start;
+	y = ray->draw_start;
 	while (y < ray->draw_end)
 	{
 		map->y = (int)map->pos & (map->size - 1);
