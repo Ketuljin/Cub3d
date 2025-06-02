@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 12:06:25 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/01 19:34:19 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/02 20:05:41 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	init_map(t_map *map)
 	map->ceiling_color = 0xE11E00;
 
 	map->valid_content = true;
-	map->initial_position = 'E';
+	map->initial_position = 'S';
 	map->initial_posX = 4;
 	map->initial_posY = 2;
 	map->index = 0;
@@ -85,8 +85,6 @@ void	init_map(t_map *map)
 // 	map->initial_position = '1';
 // 	map->i = 0;
 // }
-
-
 
 void	verif_file(t_map *map)
 {

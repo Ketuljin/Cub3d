@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:08:35 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/01 16:08:33 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/02 14:31:25 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 # define BUFFER_SIZE 15
 # define TEX_SIZE 64
+# define MOVESPEED 0.025
 
 # include <stdio.h>
 # include <unistd.h>
@@ -158,6 +159,12 @@ void	init_textutes(t_game *game);
 /*   render_frame.c   */
 void	render_frame(t_game *game);
 
+/*   render.c   */
+int		validate_move(t_game *game, double new_x, double new_y);
+int		render(t_game *game);
+
+/*   player_move.c   */
+int	player_move(t_game *game);
 
 /*typedef struct s_map
 {

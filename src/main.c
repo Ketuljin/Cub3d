@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:29:42 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/01 16:08:53 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/02 17:40:02 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,42 @@
 
 int	key_press_handle(int key, t_game *game)
 {
-	(void)game;
 	if (key == XK_Left)
-		printf("<--\n");
-	else if (key == XK_Right)
-		printf("-->\n");
-	else if (key == XK_w)
-		printf("W\n");
-	else if (key == XK_s)
-		printf("S\n");
-	else if (key == XK_a)
-		printf("A\n");
-	else if (key == XK_d)
-		printf("D\n");
+		game->player.rotate -= 1;
+	if (key == XK_Right)
+		game->player.rotate += 1;
+	if (key == XK_w)
+		game->player.move_y = 1;
+	if (key == XK_a)
+		game->player.move_x = -1;
+	if (key == XK_s)
+		game->player.move_y = -1;
+	if (key == XK_d)
+		game->player.move_x = 1;
 	return(0);
+}
+
+int	key_release_handle(int key, t_game *game)
+{
+	if (key == XK_Left && game->player.rotate <= 1)
+		game->player.rotate = 0;
+	if (key == XK_Right && game->player.rotate >= -1)
+		game->player.rotate = 0;
+	if (key == XK_w && game->player.move_y == 1)
+		game->player.move_y = 0;
+	if (key == XK_a && game->player.move_x == -1)
+		game->player.move_x += 1;
+	if (key == XK_s && game->player.move_y == -1)
+		game->player.move_y = 0;
+	if (key == XK_d && game->player.move_x == 1)
+		game->player.move_x -= 1;	
+	return(0);
+}
+void	listener(t_game *game)
+{
+	mlx_hook(game->win, 17, 0, exit_game, game);
+	mlx_hook(game->win, 2, 1L<<0, key_press_handle, game);
+	mlx_hook(game->win, 3, 1L<<1, key_release_handle, game);
 }
 
 int	init_mlx(t_game *game)
@@ -39,8 +61,6 @@ int	init_mlx(t_game *game)
 	game->win = mlx_new_window(game->mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3D");
 	if (!game->win)
 		return(FAILURE);
-	mlx_hook(game->win, 17, 0, exit_game, &game);
-	mlx_hook(game->win, 2, 1L<<0, key_press_handle, game);
 
 	return(SUCCESS);
 }
@@ -114,7 +134,9 @@ int	main(int argc, char **argv)
 		return (FAILURE);
 	init_textutes(&game);
 	render_raycast(&game);
-	print_game_state(&game); // DELETE THIS - NEED FOR TEST
+	listener(&game);
+	//print_game_state(&game); // DELETE THIS - NEED FOR TEST
+	mlx_loop_hook(game.mlx, render, &game);
 	mlx_loop(game.mlx);
 	return(SUCCESS);
 }

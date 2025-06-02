@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 10:59:59 by rureshet          #+#    #+#             */
-/*   Updated: 2025/06/01 19:44:31 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/02 15:05:32 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	init_raycasting_info(int x, t_ray *ray, t_player *player)
 	ray->map_y = (int)player->pos_y;
 	ray->deltadist_x = fabs(1 / ray->dir_x);
 	ray->deltadist_y = fabs(1 / ray->dir_y);
-	printf("Delt dist x: %f y: %f\n", ray->deltadist_x, ray->deltadist_y);
 }
 
 void	set_dda(t_ray *ray, t_player *player)
@@ -47,15 +46,13 @@ void	set_dda(t_ray *ray, t_player *player)
 		ray->step_y = 1;
 		ray->sidedist_y = (ray->map_y + 1.0 - player->pos_y) * ray->deltadist_y;
 	}
-	// printf("dir_x: %f, pos_x: %f, map_x: %d, sidedist_x: %f\n",
-	// ray->dir_x, player->pos_x, ray->map_x, ray->sidedist_x);
-
 }
 
 void	make_dda(t_game *game, t_ray *ray)
 {
 	int wall_found;
 
+	game->map = game->mapinfo.content;
 	wall_found = 0;
 	while (wall_found == 0)
 	{
@@ -75,19 +72,17 @@ void	make_dda(t_game *game, t_ray *ray)
 			|| ray->map_y > game->mapinfo.sizeL - 0.25
 			|| ray->map_x > game->mapinfo.map_width - 1.25)
 			break ;
-		// if (game->map[ray->map_y][ray->map_x] != '0')
-		// 	wall_found = 1;
+		if (game->map[ray->map_y][ray->map_x] > '0')
+			wall_found = 1;
 	}
 }
 
 void	line_height(t_ray *ray, t_game *game, t_player *player)
 {
-	printf("SIDE = %d\nSIDE DIST = %f\nDELTADIST = %f\n",ray->side, ray->sidedist_y, ray->deltadist_y);
 	if (ray->side == 0)
 		ray->wall_dist = (ray->sidedist_x - ray->deltadist_x);
 	else
 		ray->wall_dist = (ray->sidedist_y - ray->deltadist_y);
-	printf("WALL DIST = %f\n", ray->wall_dist);
 	ray->line_height = (int)(game->win_heght / ray->wall_dist);
 	ray->draw_start = -(ray->line_height) / 2 + game->win_heght / 2;
 	if (ray->draw_start < 0)

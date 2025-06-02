@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 11:20:28 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/05/27 18:54:56 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/02 15:05:52 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,7 @@ void wall_alone(t_map *map, int y, int i)
 			check = 1;
 
 	if (check == 0)
-	{
 		map->valid_content = false;
-		printf("Position : %d %d : %c\n", y, i, map->content[y][i]);
-	}
 }
 
 char	value_pos(t_map *map, int y, int i)
