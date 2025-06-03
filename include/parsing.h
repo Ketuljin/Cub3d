@@ -6,25 +6,25 @@
 /*   By: jkerthe <jkerthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:30:29 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/05/26 13:12:37 by jkerthe          ###   ########.fr       */
+/*   Updated: 2025/06/03 16:11:36 by jkerthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
-#define PARSING_H
+# define PARSING_H
 
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include <stdbool.h>
+# include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <fcntl.h>
+# include <stdbool.h>
 
-#define BUFFER_SIZE 15
+# define BUFFER_SIZE 15
 
 typedef struct s_map
 {
 	char	**content; //whole map
-	int		sizeL; //nbline
+	int		sizel; //nbline
 	bool	valid_content; //verif if content respect the rules
 	char	*north; //link for north texture
 	char	*south; //link for south texture
@@ -34,11 +34,13 @@ typedef struct s_map
 	int		floor_color; //floor convert
 	char	*ceiling; //ceiling basic
 	int		ceiling_color; //ceiling convert
-	char	initial_position; //Where he is looking at N : North S : South E : East W:West
+	char	initial_position; //Where he is looking at
 	int		i;
+	int		initial_posx;
+	int		initial_posy;
+	int		map_width;
 
 }				t_map;	
-
 
 void	init_content(t_map *map, int fd);
 char	*full_line(int fd);
@@ -53,7 +55,6 @@ void	search_for_east(t_map *map, char *stock);
 void	search_for_west(t_map *map, char *stock);
 void	search_for_south(t_map *map, char *stock);
 void	search_for_north(t_map *map, char *stock);
-char	*stock_texture(char *stock, int i, t_map *map);
 int		verif_floor_ceiling(char *color);
 int		ft_atoi(const char *str);
 char	**ft_split(char const *s, char c);
@@ -62,6 +63,11 @@ char	*ft_strdup(const char *src );
 void	search_for_map(t_map *map, char *stock);
 void	verif_map(t_map *map);
 void	wall_around(t_map *map, int y, int i);
-
+void	free_malloc(char **stockf, int l);
+void	free_all(t_map *map);
+void	print_err(char *str, t_map *map);
+void	alloc_line(t_map *map, char *stock);
+int		get_content(char c, t_map *map, int l, int i);
+void	empty_line(t_map *map, int y, int i);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jkerthe <jkerthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 11:12:14 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/05/26 13:08:43 by jkerthe          ###   ########.fr       */
+/*   Updated: 2025/06/03 16:38:57 by jkerthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,69 +14,80 @@
 
 int	check_wall(t_map *map, int y, int i)
 {
-	int j;
+	int	j;
 
 	j = 0;
 	while (map->content[y][j])
 	{
 		if (j == i && map->content[y][j] == ' ')
-			map->valid_content = false;
+			print_err("Error/ there is a hole in the map\n", map);
 		if (j == i && map->content[y][j] == '1')
-			return (0);		
+			return (0);
 		j++;
 	}
 	return (1);
 }
 
-void	wall_top(t_map *map, int y, int i)
+void	wall_vertical(t_map *map, int y, int i)
 {
-	while (y >= 0)
-	{
-		if (!check_wall(map, y, i))
-			return ;
-		y--;
-	}
-	map->valid_content = false;
-}
+	int	j;
+	int	check;
 
-void	wall_bot(t_map *map, int y, int i)
-{
-	while (y < map->sizeL-1)
+	check = 0;
+	j = y;
+	while (y < map->sizel)
 	{
 		if (!check_wall(map, y, i))
-			return ;
+		{
+			check++;
+			break ;
+		}
 		y++;
 	}
-	map->valid_content = false;
+	while (j >= 0)
+	{
+		if (!check_wall(map, j, i))
+		{
+			check++;
+			break ;
+		}
+		j--;
+	}
+	if (check != 2)
+		print_err("Error/ Your map isn't fully close", map);
 }
 
-void	wall_left(t_map *map, int y, int i)
+void	wall_horizontal(t_map *map, int y, int i)
 {
+	int	j;
+	int	check;
+
+	check = 0;
+	j = i;
 	while (i >= 0)
 	{
 		if (!check_wall(map, y, i))
-			return ;
+		{
+			check++;
+			break ;
+		}
 		i--;
 	}
-	map->valid_content = false;
-}
-
-void	wall_right(t_map *map, int y, int i)
-{
-	while (map->content[y][i] != '\0')
+	while (map->content[y][j] != '\0')
 	{
-		if (map->content[y][i] != '1')
-			return ;
-		i++;
+		if (map->content[y][j] == '1')
+		{
+			check++;
+			break ;
+		}
+		j++;
 	}
-	map->valid_content = false;
+	if (check != 2)
+		print_err("Error/ Your map isn't fully close", map);
 }
-
 
 void	wall_around(t_map *map, int y, int i)
 {
-	wall_top(map, y, i);
-	wall_bot(map, y, i);
-	wall_left(map, y, i);
-	wall_right(map, y, i);
+	wall_vertical(map, y, i);
+	wall_horizontal(map, y, i);
 }

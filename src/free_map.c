@@ -1,34 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   free_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkerthe <jkerthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 10:27:52 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/03 14:54:25 by jkerthe          ###   ########.fr       */
+/*   Created: 2025/06/03 13:51:55 by jkerthe           #+#    #+#             */
+/*   Updated: 2025/06/03 15:18:55 by jkerthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/parsing.h"
 
-char	*ft_strdup(const char *src )
+void	free_all(t_map *map)
 {
-	char			*dest;
-	size_t			i;
+	free(map->ceiling);
+	free(map->north);
+	free(map->east);
+	free(map->south);
+	free(map->floor);
+	free(map->west);
+}
 
-	i = 0;
-	dest = (char *) malloc(sizeof(const char) * ft_strlen(src) +1);
-	if (dest == NULL)
-		return (NULL);
-	else
+void	free_malloc(char **stockf, int l)
+{
+	int	y;
+
+	y = 0;
+	while (y < l)
 	{
-		dest[ft_strlen(src)] = '\0';
+		free (stockf[y]);
+		y++;
 	}
-	while (src[i])
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	return (dest);
+	free (stockf);
+}
+
+void	print_err(char *str, t_map *map)
+{
+	if (map->valid_content == false)
+		return ;
+	printf("%s\n", str);
+	map->valid_content = false;
 }

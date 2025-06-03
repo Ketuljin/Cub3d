@@ -6,7 +6,7 @@
 /*   By: jkerthe <jkerthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:29:42 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/05/20 15:05:01 by jkerthe          ###   ########.fr       */
+/*   Updated: 2025/06/03 16:30:04 by jkerthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,20 @@ int	main(int argc, char **argv)
 	fd = 0;
 	if (argc != 2)
 	{
-		printf("You need one argument: a file.cub");
+		printf("Error/ You need one argument: a file.cub\n");
 		return (1);
 	}
 	else
 	{
 		fd = check_name(argv[1]);
-		if (fd <= 0)
+		init_content(&map, fd);
+		if (map.valid_content == false)
 		{
-			printf("ERROR\n Wrong name");
+			free_all(&map);
+			free_malloc(map.content, map.sizel);
 			return (1);
 		}
-		init_content(&map, fd);
 	}
+	free_all(&map);
+	free_malloc(map.content, map.sizel);
 }

@@ -6,24 +6,11 @@
 /*   By: jkerthe <jkerthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 12:06:25 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/05/26 14:07:08 by jkerthe          ###   ########.fr       */
+/*   Updated: 2025/06/03 16:15:34 by jkerthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/parsing.h"
-
-void	free_malloc(char **stockf, int l)
-{
-	int	y;
-
-	y = 0;
-	while (y < l)
-	{
-		free (stockf[y]);
-		y++;
-	}
-	free (stockf);
-}
 
 void	init_map(t_map *map)
 {
@@ -36,32 +23,24 @@ void	init_map(t_map *map)
 	map->west = NULL;
 	map->valid_content = true;
 	map->initial_position = '1';
+	map->initial_posx = 0;
+	map->initial_posy = 0;
+	map->map_width = 0;
 	map->i = 0;
-}
-
-void	free_all(t_map *map)
-{
-	free(map->ceiling);
-	free(map->north);
-	free(map->east);
-	free(map->south);
-	free(map->floor);
-	free(map->west);
 }
 
 void	verif_file(t_map *map)
 {
-	if (map->content == false)
+	if (map->valid_content == false)
 		return ;
 	if (access(map->north, R_OK) != 0)
-		map->content = false;
+		print_err("Error/ North: No such file or directory\n", map);
 	if (access(map->south, R_OK) != 0)
-		map->content = false;
+		print_err("Error/ South: No such file or directory\n", map);
 	if (access(map->east, R_OK) != 0)
-		map->content = false;
+		print_err("Error/ East: No such file or directory\n", map);
 	if (access(map->west, R_OK) != 0)
-		map->content = false;
-	return ;
+		print_err("Error/ West: No such file or directory\n", map);
 }
 
 int	verif_floor_ceiling(char *color)
@@ -76,42 +55,27 @@ int	verif_floor_ceiling(char *color)
 	g = ft_atoi(full_color[1]);
 	b = ft_atoi(full_color[2]);
 	free_malloc(full_color, 3);
-	if (r < 0 || g < 0 || b < 0 || r > 255 || g > 255 || b > 255 )
+	if (r < 0 || g < 0 || b < 0 || r > 255 || g > 255 || b > 255)
 		return (-1);
-	return ((r << 16) | (g << 8) | b );
+	return ((r << 16) | (g << 8) | b);
 }
 
 void	init_content(t_map *map, int fd)
 {
 	char	*stock;
-	int		y;
 
-	y = 0;
-
+	if (fd <= 0)
+	{
+		print_err("Error/ Wrong name\n", map);
+		return ;
+	}
 	stock = full_line(fd);
 	init_map(map);
 	search_for_texture(map, stock);
 	verif_file(map);
 	map->floor_color = verif_floor_ceiling(map->floor);
 	map->ceiling_color = verif_floor_ceiling(map->ceiling);
-	if (map->valid_content == false || map->ceiling_color == -1 || 
-		map->floor_color == -1)
-	{
-		free (stock);
-		free_all(map);
-		return ;
-	}
 	search_for_map(map, stock);
 	verif_map(map);
-	if (map->valid_content == false)
-		printf("PAS BON DUTOUT \n");
-	while (y < map->sizeL)
-	{
-		printf("%s\n", map->content[y]);
-		y++;
-	}
-	free_all(map);
-	free_malloc(map->content, map->sizeL);
 	free(stock);
-	
 }
