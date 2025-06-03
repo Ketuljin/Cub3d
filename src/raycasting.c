@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 10:59:59 by rureshet          #+#    #+#             */
-/*   Updated: 2025/06/02 15:05:32 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/03 15:25:27 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ void	set_dda(t_ray *ray, t_player *player)
 
 void	make_dda(t_game *game, t_ray *ray)
 {
-	int wall_found;
+	int hit;
 
 	game->map = game->mapinfo.content;
-	wall_found = 0;
-	while (wall_found == 0)
+	hit = 0;
+	while (hit == 0)
 	{
 		if(ray->sidedist_x < ray->sidedist_y)
 		{
@@ -72,8 +72,8 @@ void	make_dda(t_game *game, t_ray *ray)
 			|| ray->map_y > game->mapinfo.sizeL - 0.25
 			|| ray->map_x > game->mapinfo.map_width - 1.25)
 			break ;
-		if (game->map[ray->map_y][ray->map_x] > '0')
-			wall_found = 1;
+		else if(game->map[ray->map_y][ray->map_x] > '0')
+			hit = 1;
 	}
 }
 

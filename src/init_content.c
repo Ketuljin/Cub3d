@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 12:06:25 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/02 20:05:41 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/03 17:00:04 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	init_map(t_map *map)
 {
 	const char	*content_test[] = {
 		"11111111111",
+		"10010000001",
 		"10000000001",
-		"10000000001",
-		"10000000001",
+		"11000000001",
 		"1000E000011",
 		"10000000001",
 		"11111111111",
@@ -45,18 +45,23 @@ void	init_map(t_map *map)
 	}
 	map->content[lines] = NULL;
 
-	map->north = "textures/wolfenstein/colorstone.xpm";
-	map->east = "textures/wolfenstein/redbrick.xpm";
-	map->south = "textures/wolfenstein/wood.xpm";
-	map->west = "textures/wolfenstein/mossy.xpm";
+	map->north = "textures/ruslan/1.xpm";
+	map->east = "textures/ruslan/4.xpm";
+	map->south = "textures/ruslan/2.xpm";
+	map->west = "textures/ruslan/3.xpm";
+
+	// map->north = "textures/wolfenstein/colorstone.xpm";
+	// map->east = "textures/wolfenstein/redbrick.xpm";
+	// map->south = "textures/wolfenstein/wood.xpm";
+	// map->west = "textures/wolfenstein/mossy.xpm";
 
 	map->floor = NULL;
-	map->floor_color = 0xDC6400;
+	map->floor_color = 0x545454;
 	map->ceiling = NULL;
-	map->ceiling_color = 0xE11E00;
+	map->ceiling_color = 0x5CE1E6;
 
 	map->valid_content = true;
-	map->initial_position = 'S';
+	map->initial_position = 'N';
 	map->initial_posX = 4;
 	map->initial_posY = 2;
 	map->index = 0;

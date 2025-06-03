@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:08:35 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/02 14:31:25 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/03 12:19:23 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define BUFFER_SIZE 15
 # define TEX_SIZE 64
 # define MOVESPEED 0.025
+# define ROTSPEED 0.025
 
 # include <stdio.h>
 # include <unistd.h>
