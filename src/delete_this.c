@@ -6,7 +6,7 @@ void	print_game_state(t_game *game)
 {
 	printf("win_width: %d\n", game->win_width);
 	printf("=== Map Info ===\n");
-	printf("SizeL: %d\n", game->mapinfo.sizeL);
+	printf("sizeL: %d\n", game->mapinfo.sizeL);
 	printf("Valid Content: %s\n", game->mapinfo.valid_content ? "true" : "false");
 	printf("North: %s\n", game->mapinfo.north);
 	printf("South: %s\n", game->mapinfo.south);

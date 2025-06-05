@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:29:42 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/02 17:40:02 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/05 11:05:45 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int	main(int argc, char **argv)
 	fd = 0;
 	if (argc != 2)
 	{
-		printf("You need one argument: a file.cub");
+		printf("Error/ You need one argument: a file.cub\n");
 		return (1);
 	}
 	else

@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 11:18:14 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/05/27 18:54:56 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/05 11:00:21 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,3 @@ int	ft_atoi(const char *str)
 	}
 	return (res * neg);
 }
-/*
-#include <stdio.h>
-int    main(int argc, char *argv[])
-{
-    if (1 < argc)
-    {
-        printf("ft_atoi = '%d'\n", ft_atoi(argv[1]));
-        printf("   atoi = '%d'\n", atoi(argv[1]));
-    }
-    else
-        printf("required 'nb'\n");
-}
-*/

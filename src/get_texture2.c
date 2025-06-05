@@ -6,44 +6,11 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 15:03:46 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/05/27 18:54:56 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/05 11:07:53 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/parsing.h"
-#include "../include/cub3d.h"
-
-char	*stock_texture(char *stock, int i, t_map *map)
-{
-	int		start;
-	int		count;
-	char	*file_name;
-	int		j;
-
-	j = 0;
-	count = 0;
-	i += 2;
-	if (stock [i] != ' ')
-		return (NULL);
-	while (stock[i] && (stock[i] == ' ' || stock[i] == '\n'))
-		i++;
-	start = i;
-	while (stock[i] && stock[i] != ' ' && stock[i] != '\n')
-	{
-		i++;
-		count++;
-	}
-	file_name = malloc((count + 1) * sizeof(char));
-	while (j < count)
-	{
-		file_name[j] = stock[start + j];
-		j++;
-	}
-	file_name[count] = '\0';
-	if (map->i < start+j)
-		map->i = start+j;
-	return (file_name);
-}
 
 void	search_for_floor(t_map *map, char *stock)
 {
@@ -55,14 +22,14 @@ void	search_for_floor(t_map *map, char *stock)
 		if (stock[i] == 'F')
 		{
 			if (map->floor != NULL)
-				map->valid_content = false;
+				print_err("Error/ 2 or more assignements for floor\n", map);
 			else
-				map->floor = stock_texture(stock, i-1, map);
+				map->floor = stock_texture(stock, i - 1, map);
 		}
 		i++;
 	}
 	if (map->floor == NULL)
-		map->valid_content = false;
+		print_err("Error/ No assignement for floor", map);
 }
 
 void	search_for_ceiling(t_map *map, char *stock)
@@ -75,14 +42,14 @@ void	search_for_ceiling(t_map *map, char *stock)
 		if (stock[i] == 'C')
 		{
 			if (map->ceiling != NULL)
-				map->valid_content = false;
+				print_err("Error/ 2 or more assignements for ceiling\n", map);
 			else
-				map->ceiling = stock_texture(stock, i-1, map);
+				map->ceiling = stock_texture(stock, i - 1, map);
 		}
 		i++;
 	}
 	if (map->ceiling == NULL)
-		map->valid_content = false;
+		print_err("Error/ No assignement for ceiling", map);
 }
 
 void	search_for_texture(t_map *map, char *stock)

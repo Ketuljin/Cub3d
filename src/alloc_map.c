@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 11:14:33 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/05/27 18:55:02 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/05 11:19:36 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ void	search_for_start(t_map *map, char *stock)
 	while (stock[i] && stock[i] != '1')
 	{
 		if (stock[i] == '\n')
-			map->i = i+1;
+			map->i = i + 1;
 		i++;
 	}
 }
 
 int	count_line(t_map *map, char *stock)
 {
-	int stop;
+	int	stop;
 	int	i;
 
 	stop = 0;
@@ -44,48 +44,25 @@ int	count_line(t_map *map, char *stock)
 	return (stop);
 }
 
-void alloc_line(t_map *map, char *stock)
+void	create_map(t_map *map, char *stock)
 {
-	int i = map->i;
-	int line = 0;
-	int len = 0;
+	int	i;
+	int	row;
+	int	col;
 
-	while (stock[i]) {
-		if (stock[i] == '\n') {
-			map->content[line] = malloc((len + 1) * sizeof(char));
-			if (!map->content[line])
-				return;
-			map->content[line][len] = '\0';
-			line++;
-			len = 0;
-		} else {
-			len++;
-		}
-		i++;
-	}
-	if (len > 0) {
-		map->content[line] = malloc((len + 1) * sizeof(char));
-		if (!map->content[line])
-			return;
-		map->content[line][len] = '\0';
-		line++;
-	}
-	map->sizeL = line;
-}
-
-
-void create_map(t_map *map, char *stock)
-{
-	int i = map->i;
-	int row = 0;
-	int col = 0;
-
-	while (stock[i]) {
-		if (stock[i] == '\n') {
+	col = 0;
+	row = 0;
+	i = map->i;
+	while (stock[i])
+	{
+		if (stock[i] == '\n')
+		{
 			map->content[row][col] = '\0';
 			row++;
 			col = 0;
-		} else {
+		}
+		else
+		{
 			map->content[row][col] = stock[i];
 			col++;
 		}

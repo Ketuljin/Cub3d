@@ -6,24 +6,11 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:30:06 by rureshet          #+#    #+#             */
-/*   Updated: 2025/05/29 15:51:58 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/05 11:40:08 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
-void	free_malloc(char **stockf, int l)
-{
-	int	y;
-
-	y = 0;
-	while (y < l)
-	{
-		free (stockf[y]);
-		y++;
-	}
-	free (stockf);
-}
 
 void	free_tab(void **tab)
 {
