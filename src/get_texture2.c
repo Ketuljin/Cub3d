@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 15:03:46 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/05 11:07:53 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/05 21:05:00 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	search_for_floor(t_map *map, char *stock)
 	i = 0;
 	while (stock[i])
 	{
-		if (stock[i] == 'F')
+		if (stock[i] == 'F' && stock[i + 1] == ' ')
 		{
 			if (map->floor != NULL)
 				print_err("Error/ 2 or more assignements for floor\n", map);
@@ -39,7 +39,7 @@ void	search_for_ceiling(t_map *map, char *stock)
 	i = 0;
 	while (stock[i])
 	{
-		if (stock[i] == 'C')
+		if (stock[i] == 'C' && stock[i + 1] == ' ')
 		{
 			if (map->ceiling != NULL)
 				print_err("Error/ 2 or more assignements for ceiling\n", map);
@@ -51,6 +51,8 @@ void	search_for_ceiling(t_map *map, char *stock)
 	if (map->ceiling == NULL)
 		print_err("Error/ No assignement for ceiling", map);
 }
+
+
 
 void	search_for_texture(t_map *map, char *stock)
 {

@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:29:42 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/05 11:05:45 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/05 21:10:31 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,9 @@ int	main(int argc, char **argv)
 	{
 		fd = check_name(argv[1]);
 		if (fd <= 0)
+			return (1);
+		init_content(&map, fd);
+		if (map.valid_content == false)
 		{
 			printf("ERROR\n Wrong name");
 			return (1);

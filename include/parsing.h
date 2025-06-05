@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:30:29 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/05 11:38:31 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/05 21:03:00 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdbool.h>
-# include "../include/cub3d.h"
+# include "cub3d.h"
 
 # define BUFFER_SIZE 15
 
@@ -70,5 +70,7 @@ void	print_err(char *str, t_map *map);
 void	alloc_line(t_map *map, char *stock);
 int		get_content(char c, t_map *map, int l, int i);
 void	empty_line(t_map *map, int y, int i);
+int		ft_isnumeric(char *str);
+int		ft_isdigit(int c);
 
 #endif

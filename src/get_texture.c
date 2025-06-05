@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 13:12:51 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/05 11:07:07 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/05 21:04:23 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,5 @@ void	search_for_east(t_map *map, char *stock)
 		i++;
 	}
 	if (map->east == NULL)
-		print_err("Error/ No assignement for west", map);
+		print_err("Error/ No assignement for east", map);
 }

@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 14:13:43 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/05 11:38:31 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/05 21:12:06 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,15 @@ void	empty_line(t_map *map, int y, int i)
 		x++;
 	}
 	if (map->content[y][x] == '\0' || map->content[y][x] == ' ')
-		print_err("Error/ You go an empty line inside your map", map);
-	while (y < map->sizeL - 1)
+		print_err("ERROR/ Problem with map", map);
+	while (y < map->sizel -1)
 	{
 		if (value_pos(map, y, i) != ' ')
 			break ;
 		y++;
 	}
 	if (map->content[y][i] == '\0' || map->content[y][i] == ' ')
-		print_err("Error/ You go an empty line inside your map", map);
+		print_err("ERROR/ Problem with map", map);
 }
 
 int	get_content(char c, t_map *map, int l, int i)
@@ -58,7 +58,7 @@ int	get_content(char c, t_map *map, int l, int i)
 	{
 		if (map->initial_position != '1')
 		{
-			print_err("Error/ Your map can contain only one player(NSWE)", map);
+			print_err("ERROR/ Problem with map", map);
 			return (0);
 		}
 		else
