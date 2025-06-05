@@ -6,7 +6,7 @@
 /*   By: jkerthe <jkerthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 13:57:09 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/03 15:18:17 by jkerthe          ###   ########.fr       */
+/*   Updated: 2025/06/05 16:23:13 by jkerthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	word_length(char *stock, int i)
 	int	len;
 
 	len = 0;
-	while (stock[i] && stock[i] != ' ' && stock[i] != '\n')
+	while (stock[i] && stock[i] != '\n' && stock[i] != ' ' && stock[i] != '\t')
 	{
 		i++;
 		len++;
@@ -32,7 +32,18 @@ static int	word_length(char *stock, int i)
 	return (len);
 }
 
-static char	*copy_word(char *stock, int start, int len)
+int	verif_end_line(char	*stock, int i)
+{
+	while (stock[i] && stock[i] != '\n')
+	{
+		if (stock[i] != ' ' && stock[i] != '\t')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+static char	*copy_word(char *stock, int start, int len, t_map *map)
 {
 	char	*word;
 	int		j;
@@ -43,10 +54,22 @@ static char	*copy_word(char *stock, int start, int len)
 	j = 0;
 	while (j < len)
 	{
-		word[j] = stock[start + j];
-		j++;
+		if (stock[start + j] && stock[start + j] != '\n' 
+			&& stock[start + j] != ' ' && stock[start + j] != '\t')
+		{
+			word[j] = stock[start + j];
+			j++;
+		}
+		else
+			break;
 	}
 	word[len] = '\0';
+	if (!verif_end_line(stock, start + j))
+	{
+		free(word);
+		print_err("ERROR/ Wrong input in the file\n", map);
+		return (NULL);
+	}
 	return (word);
 }
 
@@ -62,7 +85,7 @@ char	*stock_texture(char *stock, int i, t_map *map)
 	i = skip_spaces_newlines(stock, i);
 	start = i;
 	len = word_length(stock, i);
-	file_name = copy_word(stock, start, len);
+	file_name = copy_word(stock, start, len, map);
 	if (!file_name)
 		return (NULL);
 	if (map->i < start + len)

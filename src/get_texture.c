@@ -6,7 +6,7 @@
 /*   By: jkerthe <jkerthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 13:12:51 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/03 13:55:31 by jkerthe          ###   ########.fr       */
+/*   Updated: 2025/06/05 16:32:09 by jkerthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,5 @@ void	search_for_east(t_map *map, char *stock)
 		i++;
 	}
 	if (map->east == NULL)
-		print_err("Error/ No assignement for west", map);
+		print_err("Error/ No assignement for east", map);
 }

@@ -6,7 +6,7 @@
 /*   By: jkerthe <jkerthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:29:42 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/03 16:30:04 by jkerthe          ###   ########.fr       */
+/*   Updated: 2025/06/05 12:42:43 by jkerthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ int	main(int argc, char **argv)
 	else
 	{
 		fd = check_name(argv[1]);
+		if (fd <= 0)
+			return (1);
 		init_content(&map, fd);
 		if (map.valid_content == false)
 		{

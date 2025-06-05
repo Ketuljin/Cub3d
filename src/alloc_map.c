@@ -6,12 +6,13 @@
 /*   By: jkerthe <jkerthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 11:14:33 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/03 16:15:13 by jkerthe          ###   ########.fr       */
+/*   Updated: 2025/06/05 16:53:36 by jkerthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/parsing.h"
 
+/*
 void	search_for_start(t_map *map, char *stock)
 {
 	int	i;
@@ -23,7 +24,7 @@ void	search_for_start(t_map *map, char *stock)
 			map->i = i + 1;
 		i++;
 	}
-}
+}*/
 
 int	count_line(t_map *map, char *stock)
 {
@@ -71,7 +72,7 @@ void	create_map(t_map *map, char *stock)
 
 void	search_for_map(t_map *map, char *stock)
 {
-	search_for_start(map, stock);
+	//search_for_start(map, stock);
 	map->sizel = count_line(map, stock);
 	map->content = malloc((map->sizel) * sizeof(char *));
 	alloc_line(map, stock);

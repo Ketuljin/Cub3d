@@ -6,7 +6,7 @@
 /*   By: jkerthe <jkerthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 11:20:28 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/03 16:17:02 by jkerthe          ###   ########.fr       */
+/*   Updated: 2025/06/05 17:22:26 by jkerthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ void	verif_content(t_map *map)
 		while (map->content[l][i] != '\0')
 		{
 			if (!get_content(map->content[l][i], map, l, i))
-				print_err("Error/ Your map can only contain : 1,0,N,S,E,W",
-					map);
+				print_err("ERROR/ Problem with map", map);
 			i++;
 		}
 		l++;
@@ -51,7 +50,7 @@ void	wall_alone(t_map *map, int y, int i)
 		if (map->content[y][i + 1] != ' ' && map->content[y][i + 1] != '\0')
 			check = 1;
 	if (check == 0)
-		print_err("Error/ Your map contain a wall alone\n", map);
+		print_err("ERROR/ Problem with map", map);
 }
 
 void	verif_wall(t_map *map)
@@ -63,27 +62,26 @@ void	verif_wall(t_map *map)
 	i = 0;
 	while (y < map->sizel - 1)
 	{
-		if (map->content[y][0] == '\0')
-			map->valid_content = false;
 		while (map->content[y][i])
 		{
 			if (map->content[y][i] != '1' && map->content[y][i] != ' ')
 				wall_around(map, y, i);
 			if (map->content[y][i] == '1')
 				wall_alone(map, y, i);
-			if (map->content[y][i] == ' ')
-				empty_line(map, y, i);
+			if (map->valid_content == false)
+				break ;
 			i++;
 		}
 		i = 0;
 		y++;
 	}
+	
 }
 
 void	verif_map(t_map *map)
 {
 	verif_content(map);
 	if (map->initial_position == '1')
-		print_err("Error/ There is no player in the map", map);
+		print_err("ERROR/ Problem with map", map);
 	verif_wall(map);
 }

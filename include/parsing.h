@@ -6,7 +6,7 @@
 /*   By: jkerthe <jkerthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:30:29 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/03 16:11:36 by jkerthe          ###   ########.fr       */
+/*   Updated: 2025/06/05 18:01:03 by jkerthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_map
 	int		initial_posx;
 	int		initial_posy;
 	int		map_width;
+	int		first_x;
 
 }				t_map;	
 
@@ -69,5 +70,7 @@ void	print_err(char *str, t_map *map);
 void	alloc_line(t_map *map, char *stock);
 int		get_content(char c, t_map *map, int l, int i);
 void	empty_line(t_map *map, int y, int i);
+int		ft_isnumeric(char *str);
+int		ft_isdigit(int c);
 
 #endif
