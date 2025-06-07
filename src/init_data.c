@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 11:04:52 by rureshet          #+#    #+#             */
-/*   Updated: 2025/06/05 11:38:31 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/07 18:40:08 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	init_game(t_game *game)
 	game->win = NULL;
 	game->win_width = WIN_WIDTH;
 	game->win_heght = WIN_HEIGHT;
-	init_map(&game->mapinfo);
+	//init_map(&game->mapinfo);
 	init_player(&game->player, &game->mapinfo);
 	init_ray(&game->ray);
 	game->map = NULL;

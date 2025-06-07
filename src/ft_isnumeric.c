@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isnumeric.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkerthe <jkerthe@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 11:37:16 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/05 17:32:04 by jkerthe          ###   ########.fr       */
+/*   Updated: 2025/06/06 17:34:25 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/parsing.h"
-
+#include "../include/cub3d.h"
 int	ft_isdigit(int c)
 {
 	if ((c <= 57 && c >= 48))

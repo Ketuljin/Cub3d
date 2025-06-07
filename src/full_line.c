@@ -6,11 +6,10 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 13:29:33 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/05/27 18:54:56 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/07 17:13:28 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/parsing.h"
 #include "../include/cub3d.h"
 
 char	*ft_free(char *buffer, char *buf)
@@ -39,7 +38,7 @@ char	*read_file(int fd, char *res)
 			free(buffer);
 			return (NULL);
 		}
-		buffer[byte_read] = 0;
+		buffer[byte_read] = '\0';
 		res = ft_free(res, buffer);
 	}
 	free(buffer);

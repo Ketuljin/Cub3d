@@ -1,13 +1,13 @@
-NO ../textures/wolfenstein/colorstone.xpm
-SO ../texutres/wolfenstein/mossy.xpm
-WE ../textures/wolfenstein/redbrick.xpm
-EA ../textures/wolfenstein/wood.xpm
+NO textures/wolfenstein/colorstone.xpm
+SO textures/wolfenstein/mossy.xpm
+WE textures/wolfenstein/redbrick.xpm
+EA textures/wolfenstein/wood.xpm
 
 F 220,100,0
 C 225,30,0
 
 111111
-100101
-001001
-1100N1
+100001
+10N001
+100001
 111111

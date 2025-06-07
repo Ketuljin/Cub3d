@@ -6,13 +6,11 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 11:14:33 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/05 21:03:45 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/07 18:01:29 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/parsing.h"
 #include "../include/cub3d.h"
-
 /*
 void	search_for_start(t_map *map, char *stock)
 {
@@ -69,13 +67,14 @@ void	create_map(t_map *map, char *stock)
 		}
 		i++;
 	}
+	map->content[row] = NULL;
 }
 
 void	search_for_map(t_map *map, char *stock)
 {
 	//search_for_start(map, stock);
-	map->sizel = count_line(map, stock);
-	map->content = malloc((map->sizel) * sizeof(char *));
+	map->sizeL = count_line(map, stock);
+	map->content = malloc((map->sizeL + 1) * sizeof(char *));
 	alloc_line(map, stock);
 	create_map(map, stock);
 	map->i = 0;

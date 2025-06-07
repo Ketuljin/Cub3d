@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   stock_texture.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkerthe <jkerthe@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 13:57:09 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/05 16:23:13 by jkerthe          ###   ########.fr       */
+/*   Updated: 2025/06/06 17:34:25 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/parsing.h"
+#include "../include/cub3d.h"
 
 static int	skip_spaces_newlines(char *stock, int i)
 {

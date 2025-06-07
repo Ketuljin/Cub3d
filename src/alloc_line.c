@@ -6,11 +6,11 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 13:38:52 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/05 11:18:56 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/06 17:34:25 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/parsing.h"
+#include "../include/cub3d.h"
 
 static int	line_length(char *stock, int i)
 {

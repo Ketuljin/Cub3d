@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:08:35 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/05 11:38:31 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/07 16:22:56 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,7 +212,39 @@ void	wall_around(t_map *map, int y, int i);
 
 void	init_player_direction(t_player *player, t_map *map);
 
+
+void	init_content(t_map *map, int fd);
+char	*full_line(int fd);
+size_t	ft_strlen(const char *theString);
+void	*ft_calloc(size_t elementCount, size_t elementSize);
+void	ft_bzero(void *s, size_t n);
+char	*ft_strchr(const char *string, int searchedChar );
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*stock_texture(char *stock, int i, t_map *map);
+void	search_for_texture(t_map *map, char *stock);
+void	search_for_east(t_map *map, char *stock);
+void	search_for_west(t_map *map, char *stock);
+void	search_for_south(t_map *map, char *stock);
+void	search_for_north(t_map *map, char *stock);
+int		verif_floor_ceiling(char *color);
+int		ft_atoi(const char *str);
+char	**ft_split(char const *s, char c);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strdup(const char *src );
+void	search_for_map(t_map *map, char *stock);
+void	verif_map(t_map *map);
+void	wall_around(t_map *map, int y, int i);
+void	free_malloc(char **stockf, int l);
+//void	free_all(t_map *map);
+void	print_err(char *str, t_map *map);
+void	alloc_line(t_map *map, char *stock);
+int		get_content(char c, t_map *map, int l, int i);
+void	empty_line(t_map *map, int y, int i);
+int		ft_isnumeric(char *str);
+int		ft_isdigit(int c);
+
 /*   DELETE THIS   */
 void	print_game_state(t_game *game);
+void	debug_display_data( t_game *data);
 
 #endif

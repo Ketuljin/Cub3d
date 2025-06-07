@@ -6,11 +6,10 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 08:05:49 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/05/27 18:54:56 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/06 17:34:25 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/parsing.h"
 #include "../include/cub3d.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)

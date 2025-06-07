@@ -6,49 +6,48 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 12:06:25 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/05 21:09:13 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/07 16:53:59 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/parsing.h"
 #include "../include/cub3d.h"
 
 
 
 void	init_map(t_map *map)
 {
-	const char	*content_test[] = {
-		"11111111111",
-		"10010000001",
-		"10000000001",
-		"11000000001",
-		"1000E000011",
-		"10000000001",
-		"11111111111",
-		NULL
-	};
-	int	lines;
-	int	i;
+	// const char	*content_test[] = {
+	// 	"11111111111",
+	// 	"10010000001",
+	// 	"10000000001",
+	// 	"11000000001",
+	// 	"1000E000011",
+	// 	"10000000001",
+	// 	"11111111111",
+	// 	NULL
+	// };
+	// int	lines;
+	// int	i;
 
-	lines = 0;
-	while (content_test[lines])
-		lines++;
+	// lines = 0;
+	// while (content_test[lines])
+	// 	lines++;
 
-	map->content = malloc(sizeof(char *) * (lines + 1));
-	if (!map->content)
-		return;
-	i = 0;
-	while (i < lines)
-	{
-		map->content[i] = strdup(content_test[i]);
-		i++;
-	}
-	map->content[lines] = NULL;
+	map->content = NULL;//malloc(sizeof(char *) * (lines + 1));
+	// if (!map->content)
+	// 	return;
+	// i = 0;
+	// while (i < lines)
+	// {
+	// 	map->content[i] = strdup(content_test[i]);
+	// 	i++;
+	// }
+	// map->content[lines] = NULL;
 
-	map->north = "textures/ruslan/1.xpm";
-	map->east = "textures/ruslan/4.xpm";
-	map->south = "textures/ruslan/2.xpm";
-	map->west = "textures/ruslan/3.xpm";
+	map->north = NULL;
+	map->east = NULL;
+	map->south = NULL;
+	map->west = NULL;
 
 	// map->north = "textures/wolfenstein/colorstone.xpm";
 	// map->east = "textures/wolfenstein/redbrick.xpm";
@@ -56,23 +55,22 @@ void	init_map(t_map *map)
 	// map->west = "textures/wolfenstein/mossy.xpm";
 
 	map->floor = NULL;
-	map->floor_color = 0x545454;
+	// map->floor_color = 0x545454;
 	map->ceiling = NULL;
-	map->ceiling_color = 0x5CE1E6;
+	// map->ceiling_color = 0x5CE1E6;
 
 	map->valid_content = true;
 	map->map_width = 0;
-	map->initial_position = 'N';
-	map->initial_posX = 4;
-	map->initial_posY = 2;
+	map->initial_position = '1';
+	map->initial_posX = 0;
+	map->initial_posY = 0;
 	map->index = 0;
 	map->size = TEX_SIZE;
 	map->step = 0.0;
 	map->pos = 0.0;
 	map->x = 0;
 	map->y = 0;
-	map->map_width = ft_strlen(content_test[0]); 
-	map->sizeL = lines;
+	map->sizeL = 0;//lines;
 	map->i = 0;
 }
 
@@ -171,5 +169,5 @@ void	init_content(t_map *map, int fd)
 		print_err("ERROR/ Problem with color ceil/floor\n", map);
 	search_for_map(map, stock);
 	verif_map(map);
-	free(stock);
+	//free(stock);
 }

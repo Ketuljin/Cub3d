@@ -6,11 +6,10 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 11:12:14 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/05 21:13:00 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/06 17:34:25 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/parsing.h"
 #include "../include/cub3d.h"
 
 int	check_wall(t_map *map, int y, int i)
@@ -21,14 +20,14 @@ int	check_wall(t_map *map, int y, int i)
 	while (map->content[y][j])
 	{
 		if (j == i && map->content[y][j] == ' ')
-			print_err("ERROR/ Problem with map", map);
+			print_err("ERROR/ Problem with map 7", map);
 		if (j == i && map->content[y][j] == '1')
 			return (0);
 		j++;
 	}
 	if (j < i)
 	{
-		print_err("ERROR/ Problem with map", map);
+		print_err("ERROR/ Problem with map 8", map);
 		return (1);
 	}
 	return (1);
@@ -60,7 +59,7 @@ void	wall_vertical(t_map *map, int y, int i)
 		j--;
 	}
 	if (check != 2)
-		print_err("ERROR/ Problem with map", map);
+		print_err("ERROR/ Problem with map 9", map);
 }
 
 void	wall_horizontal(t_map *map, int y, int i)
@@ -89,7 +88,7 @@ void	wall_horizontal(t_map *map, int y, int i)
 		j++;
 	}
 	if (check != 2)
-		print_err("ERROR/ Problem with map", map);
+		print_err("ERROR/ Problem with map 10", map);
 }
 
 void	wall_around(t_map *map, int y, int i)

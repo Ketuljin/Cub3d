@@ -6,11 +6,10 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:29:42 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/05 21:10:31 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/07 18:41:43 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/parsing.h"
 #include "../include/cub3d.h"
 
 int	key_press_handle(int key, t_game *game)
@@ -20,13 +19,29 @@ int	key_press_handle(int key, t_game *game)
 	if (key == XK_Right)
 		game->player.rotate += 1;
 	if (key == XK_w)
+	{
+		printf("W\n");
 		game->player.move_y = 1;
+		printf("%d\n", game->player.move_y);
+	}
 	if (key == XK_a)
+	{
+		printf("A\n");
 		game->player.move_x = -1;
+		printf("%d\n", game->player.move_x);
+	}
 	if (key == XK_s)
+	{
+		printf("S\n");
 		game->player.move_y = -1;
+		printf("%d\n", game->player.move_y);
+	}
 	if (key == XK_d)
+	{
+		printf("D\n");
 		game->player.move_x = 1;
+		printf("%d\n", game->player.move_x);
+	}
 	return(0);
 }
 
@@ -61,7 +76,6 @@ int	init_mlx(t_game *game)
 	game->win = mlx_new_window(game->mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3D");
 	if (!game->win)
 		return(FAILURE);
-
 	return(SUCCESS);
 }
 
@@ -112,6 +126,7 @@ int	main(int argc, char **argv)
 	int			fd;
 	t_game		game;
 
+	
 	fd = 0;
 	if (argc != 2)
 	{
@@ -123,8 +138,8 @@ int	main(int argc, char **argv)
 		fd = check_name(argv[1]);
 		if (fd <= 0)
 			return (1);
-		init_content(&map, fd);
-		if (map.valid_content == false)
+		init_content(&game.mapinfo, fd);
+		if (game.mapinfo.valid_content == false)
 		{
 			printf("ERROR\n Wrong name");
 			return (1);
@@ -133,9 +148,11 @@ int	main(int argc, char **argv)
 	}
 	init_game(&game);
 	init_player_direction(&game.player, &game.mapinfo);
+	debug_display_data(&game);
 	if(init_mlx(&game) == FAILURE)
 		return (FAILURE);
 	init_textutes(&game);
+	
 	render_raycast(&game);
 	listener(&game);
 	//print_game_state(&game); // DELETE THIS - NEED FOR TEST

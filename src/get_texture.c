@@ -6,13 +6,11 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 13:12:51 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/05 21:04:23 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/06 17:34:25 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/parsing.h"
 #include "../include/cub3d.h"
-
 void	search_for_north(t_map *map, char *stock)
 {
 	int	i;

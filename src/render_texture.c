@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 15:40:59 by rureshet          #+#    #+#             */
-/*   Updated: 2025/06/01 17:38:58 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/07 18:30:18 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	*xpm_to_img(t_game *game, char *path)
 
 void	init_textutes(t_game *game)
 {
+	printf("init_textutes");
 	game->textures = ft_calloc(5, sizeof *game->textures);
 	if (!game->textures)
 		clean_exit(game, 1);
