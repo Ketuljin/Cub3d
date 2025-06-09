@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 14:13:43 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/09 14:09:38 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/09 14:57:13 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int	get_content(char c, t_map *map, int l, int i)
 			map->initial_posX = i;
 			map->initial_posY = l;
 			map->initial_position = c;
+			map->content[l][i] = '0';
 		}
 	}
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 10:59:59 by rureshet          #+#    #+#             */
-/*   Updated: 2025/06/09 13:41:17 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/09 14:49:28 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	make_dda(t_game *game, t_ray *ray)
 			|| ray->map_y > game->mapinfo.sizeL - 0.25
 			|| ray->map_x > game->mapinfo.map_width - 1.25)
 			break ;
-		else if(game->map[ray->map_y][ray->map_x] > '0')
+		else if(game->mapinfo.content[ray->map_y][ray->map_x] > '0')
 			hit = 1;
 	}
 }
