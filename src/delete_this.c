@@ -52,6 +52,8 @@ void	debug_display_player( t_game *data)
 	printf( "\n---- PLAYER\n" );
 	printf("Player pos: ");
 	printf("x = %f, y = %f\n", data->player.pos_x, data->player.pos_y);
+	printf("Initial pos: ");
+	printf("x = %d, y = %d\n", data->mapinfo.initial_posX, data->mapinfo.initial_posY);
 	printf("Player direction: %c ", data->player.dir);
 	printf("(x = %f, y = %f)\n", data->player.dir_x, data->player.dir_y);
 }

@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:29:42 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/07 18:41:43 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/09 13:37:55 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,25 +22,21 @@ int	key_press_handle(int key, t_game *game)
 	{
 		printf("W\n");
 		game->player.move_y = 1;
-		printf("%d\n", game->player.move_y);
 	}
 	if (key == XK_a)
 	{
 		printf("A\n");
 		game->player.move_x = -1;
-		printf("%d\n", game->player.move_x);
 	}
 	if (key == XK_s)
 	{
 		printf("S\n");
 		game->player.move_y = -1;
-		printf("%d\n", game->player.move_y);
 	}
 	if (key == XK_d)
 	{
 		printf("D\n");
 		game->player.move_x = 1;
-		printf("%d\n", game->player.move_x);
 	}
 	return(0);
 }
@@ -63,7 +59,7 @@ int	key_release_handle(int key, t_game *game)
 }
 void	listener(t_game *game)
 {
-	mlx_hook(game->win, 17, 0, exit_game, game);
+	mlx_hook(game->win, 17, 0L, exit_game, game);
 	mlx_hook(game->win, 2, 1L<<0, key_press_handle, game);
 	mlx_hook(game->win, 3, 1L<<1, key_release_handle, game);
 }
@@ -141,10 +137,13 @@ int	main(int argc, char **argv)
 		init_content(&game.mapinfo, fd);
 		if (game.mapinfo.valid_content == false)
 		{
-			printf("ERROR\n Wrong name");
+			//free_all(&game.mapinfo);
+			free_game(&game);
 			return (1);
 		}
-		init_content(&game.mapinfo, fd);
+		//free_all(&game.mapinfo);
+		//free_game(&game);
+		// init_content(&game.mapinfo, fd);
 	}
 	init_game(&game);
 	init_player_direction(&game.player, &game.mapinfo);

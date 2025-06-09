@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 14:13:43 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/06 17:34:25 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/09 14:09:38 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	empty_line(t_map *map, int y, int i)
 	}
 	if (map->content[y][x] == '\0' || map->content[y][x] == ' ')
 		print_err("ERROR/ Problem with map 4", map);
-	while (y < map->sizeL -1)
+	while (y < map->sizeL - 1)
 	{
 		if (value_pos(map, y, i) != ' ')
 			break ;

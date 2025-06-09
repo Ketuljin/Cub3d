@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 12:40:27 by rureshet          #+#    #+#             */
-/*   Updated: 2025/06/07 15:11:55 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/09 13:01:00 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ int player_move_forward(t_game *game)
 
 	new_x = game->player.pos_x + game->player.dir_x * MOVESPEED;
 	new_y = game->player.pos_y + game->player.dir_y * MOVESPEED;
-	printf("Moved forv: %f %f\n", new_x, new_y);
-	return(validate_move(game, new_x, new_y));
+	return (validate_move(game, new_x, new_y));
 }
 
 int player_move_backward(t_game *game)
@@ -83,22 +82,18 @@ int	player_move(t_game *game)
 	if (game->player.move_y == -1)
 	{
 		moved += player_move_backward(game);
-		printf("Moved 2: %d\n", moved);
 	}
 	if (game->player.move_x == -1)
 	{
 		moved += player_move_left(game);
-		printf("Moved 3: %d\n", moved);
 	}
 	if (game->player.move_x == 1)
 	{
 		moved += player_move_right(game);
-		printf("Moved 4: %d\n", moved);
 	}
 	if (game->player.rotate != 0)
 	{
 		moved += player_rotate(game, game->player.rotate);
-		printf("Moved rot: %d\n", moved);
 	}
 	return (moved);
 }

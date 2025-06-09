@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 11:20:28 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/06 17:34:25 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/09 14:21:31 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	verif_content(t_map *map)
 
 	i = 0;
 	l = 0;
-	while (map->sizeL > l)
+	while (l < map->sizeL)
 	{
 		while (map->content[l][i] != '\0')
 		{
