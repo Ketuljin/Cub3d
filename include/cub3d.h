@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:08:35 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/07 16:22:56 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/09 16:50:25 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,14 @@
 # define SUCCESS 0
 # define FAILURE 1
 
+// # define WIN_WIDTH 320
+// # define WIN_HEIGHT 200
+
 # define WIN_WIDTH 640
 # define WIN_HEIGHT 480
+
+// # define WIN_WIDTH 1024
+// # define WIN_HEIGHT 768
 
 # define BUFFER_SIZE 15
 # define TEX_SIZE 64
