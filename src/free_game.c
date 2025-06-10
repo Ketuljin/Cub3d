@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:30:06 by rureshet          #+#    #+#             */
-/*   Updated: 2025/06/05 11:40:08 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/10 17:30:39 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,16 @@ void	free_tab(void **tab)
 {
 	size_t	i;
 
+	if (!tab)
+		return ;
 	i = 0;
 	while (tab[i])
 	{
 		free(tab[i]);
+		tab[i] = NULL;
 		i++;
 	}
-	if (tab)
-	{
-		free(tab);
-		tab = NULL;
-	}
+	free(tab);
 }
 
 void	free_map(t_map *map)
@@ -44,8 +43,11 @@ void	free_map(t_map *map)
 	if (map->ceiling)
 		free(map->ceiling);
 	if (map->content)
+	{
 		free_tab((void **)map->content);
-
+		map->content = NULL;
+	}
+		
 }
 
 void	free_game(t_game *game)
@@ -54,8 +56,8 @@ void	free_game(t_game *game)
 		free_tab((void **)game->textures);
 	if (game->texture_pixels)
 		free_tab((void **)game->texture_pixels);
-	if (game->map)
-		free_tab((void **)game->map);
+	// if (game->map)
+	// 	free_tab((void **)game->map);
 	free_map(&game->mapinfo);
 }
 

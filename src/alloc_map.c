@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 11:14:33 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/09 14:32:11 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/10 17:29:57 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ void	search_for_map(t_map *map, char *stock)
 	search_for_start(map, stock);
 	map->sizeL = count_line(map, stock);
 	map->content = malloc((map->sizeL + 1) * sizeof(char *));
+	if (!map->content)
+		return ;
 	alloc_line(map, stock);
 	create_map(map, stock);
 	map->i = 0;

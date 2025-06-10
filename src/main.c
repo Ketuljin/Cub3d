@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:29:42 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/09 13:37:55 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/10 17:27:38 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,35 +14,27 @@
 
 int	key_press_handle(int key, t_game *game)
 {
+	if (key == XK_Escape)
+		exit_game(game);
 	if (key == XK_Left)
 		game->player.rotate -= 1;
 	if (key == XK_Right)
 		game->player.rotate += 1;
 	if (key == XK_w)
-	{
-		printf("W\n");
 		game->player.move_y = 1;
-	}
 	if (key == XK_a)
-	{
-		printf("A\n");
 		game->player.move_x = -1;
-	}
 	if (key == XK_s)
-	{
-		printf("S\n");
 		game->player.move_y = -1;
-	}
 	if (key == XK_d)
-	{
-		printf("D\n");
 		game->player.move_x = 1;
-	}
 	return(0);
 }
 
 int	key_release_handle(int key, t_game *game)
 {
+	if (key == XK_Escape)
+		exit_game(game);
 	if (key == XK_Left && game->player.rotate <= 1)
 		game->player.rotate = 0;
 	if (key == XK_Right && game->player.rotate >= -1)
@@ -147,7 +139,7 @@ int	main(int argc, char **argv)
 	}
 	init_game(&game);
 	init_player_direction(&game.player, &game.mapinfo);
-	debug_display_data(&game);
+	// debug_display_data(&game);
 	if(init_mlx(&game) == FAILURE)
 		return (FAILURE);
 	init_textutes(&game);

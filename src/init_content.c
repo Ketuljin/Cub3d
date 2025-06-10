@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 12:06:25 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/07 16:53:59 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/10 17:36:39 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,5 +169,5 @@ void	init_content(t_map *map, int fd)
 		print_err("ERROR/ Problem with color ceil/floor\n", map);
 	search_for_map(map, stock);
 	verif_map(map);
-	//free(stock);
+	free(stock);
 }

@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 10:59:59 by rureshet          #+#    #+#             */
-/*   Updated: 2025/06/09 14:49:28 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/10 17:31:02 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	make_dda(t_game *game, t_ray *ray)
 {
 	int hit;
 
-	game->map = game->mapinfo.content;
+	//game->map = game->mapinfo.content;
 	hit = 0;
 	while (hit == 0)
 	{

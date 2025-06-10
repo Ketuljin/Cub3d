@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 11:04:52 by rureshet          #+#    #+#             */
-/*   Updated: 2025/06/07 18:40:08 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/10 17:30:48 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	init_game(t_game *game)
 	//init_map(&game->mapinfo);
 	init_player(&game->player, &game->mapinfo);
 	init_ray(&game->ray);
-	game->map = NULL;
+	//game->map = NULL;
 	game->texture_pixels = NULL;
 	game->textures = NULL;
 }
