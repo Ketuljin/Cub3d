@@ -6,7 +6,7 @@
 /*   By: jkerthe <jkerthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 13:51:55 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/03 15:18:55 by jkerthe          ###   ########.fr       */
+/*   Updated: 2025/06/10 14:59:46 by jkerthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,18 @@
 
 void	free_all(t_map *map)
 {
-	free(map->ceiling);
-	free(map->north);
-	free(map->east);
-	free(map->south);
-	free(map->floor);
-	free(map->west);
+	if (map->ceiling != NULL)
+		free(map->ceiling);
+	if (map->north != NULL)
+		free(map->north);
+	if (map->east != NULL)
+		free(map->east);
+	if (map->south != NULL)
+		free(map->south);
+	if (map->floor != NULL)
+		free(map->floor);
+	if (map->west != NULL)
+		free(map->west);
 }
 
 void	free_malloc(char **stockf, int l)
@@ -27,6 +33,8 @@ void	free_malloc(char **stockf, int l)
 	int	y;
 
 	y = 0;
+	if (stockf == NULL)
+		return ;
 	while (y < l)
 	{
 		free (stockf[y]);

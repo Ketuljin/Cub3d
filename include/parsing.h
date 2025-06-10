@@ -6,7 +6,7 @@
 /*   By: jkerthe <jkerthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:30:29 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/05 18:01:03 by jkerthe          ###   ########.fr       */
+/*   Updated: 2025/06/10 15:36:53 by jkerthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,7 @@ int		get_content(char c, t_map *map, int l, int i);
 void	empty_line(t_map *map, int y, int i);
 int		ft_isnumeric(char *str);
 int		ft_isdigit(int c);
+char	*ft_strrchr(const char *string, int s);
+int		count_char(char c, char *color);
 
 #endif

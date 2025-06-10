@@ -6,7 +6,7 @@
 /*   By: jkerthe <jkerthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:29:42 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/05 12:42:43 by jkerthe          ###   ########.fr       */
+/*   Updated: 2025/06/10 15:57:15 by jkerthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,21 @@ int	check_name(char *argv)
 	return (fd);
 }
 
+void	start_parsing(t_map *map, int fd)
+{
+	if (fd <= 0)
+	{
+		printf("ERROR/ You need to give a file.cub with a correct path\n");
+		return ;
+	}
+	init_content(map, fd);
+	if (map->valid_content == false)
+	{
+		free_all(map);
+		free_malloc(map->content, map->sizel);
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	int		fd;
@@ -62,22 +77,16 @@ int	main(int argc, char **argv)
 	fd = 0;
 	if (argc != 2)
 	{
-		printf("Error/ You need one argument: a file.cub\n");
+		printf("ERROR/ You need one argument: a file.cub\n");
 		return (1);
 	}
 	else
 	{
 		fd = check_name(argv[1]);
-		if (fd <= 0)
-			return (1);
-		init_content(&map, fd);
-		if (map.valid_content == false)
-		{
-			free_all(&map);
-			free_malloc(map.content, map.sizel);
-			return (1);
-		}
+		start_parsing(&map, fd);
 	}
+	if (map.valid_content == false)
+		return (1);
 	free_all(&map);
 	free_malloc(map.content, map.sizel);
 }

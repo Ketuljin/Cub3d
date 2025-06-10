@@ -6,7 +6,7 @@
 /*   By: jkerthe <jkerthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 11:20:28 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/05 17:22:26 by jkerthe          ###   ########.fr       */
+/*   Updated: 2025/06/10 14:06:11 by jkerthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,33 +24,12 @@ void	verif_content(t_map *map)
 		while (map->content[l][i] != '\0')
 		{
 			if (!get_content(map->content[l][i], map, l, i))
-				print_err("ERROR/ Problem with map", map);
+				print_err("ERROR/ Your map can have : 10NSWE\n", map);
 			i++;
 		}
 		l++;
 		i = 0;
 	}
-}
-
-void	wall_alone(t_map *map, int y, int i)
-{
-	int	check;
-
-	check = 0;
-	if (y < map->sizel && i < (int)ft_strlen(map->content[y + 1]))
-		if (map->content[y + 1][i] != ' ' && map->content[y + 1][i] != '\0')
-			check = 1;
-	if (y > 0 && i < (int)ft_strlen(map->content[y - 1]))
-		if (map->content[y - 1][i] != ' ' && map->content[y - 1][i] != '\0')
-			check = 1;
-	if (i > 0)
-		if (map->content[y][i - 1] != ' ' && map->content[y][i - 1] != '\0')
-			check = 1;
-	if (i + 1 < (int)ft_strlen(map->content[y]))
-		if (map->content[y][i + 1] != ' ' && map->content[y][i + 1] != '\0')
-			check = 1;
-	if (check == 0)
-		print_err("ERROR/ Problem with map", map);
 }
 
 void	verif_wall(t_map *map)
@@ -66,8 +45,6 @@ void	verif_wall(t_map *map)
 		{
 			if (map->content[y][i] != '1' && map->content[y][i] != ' ')
 				wall_around(map, y, i);
-			if (map->content[y][i] == '1')
-				wall_alone(map, y, i);
 			if (map->valid_content == false)
 				break ;
 			i++;
@@ -75,13 +52,14 @@ void	verif_wall(t_map *map)
 		i = 0;
 		y++;
 	}
-	
 }
 
 void	verif_map(t_map *map)
 {
+	if (map->content == NULL)
+		return ;
 	verif_content(map);
 	if (map->initial_position == '1')
-		print_err("ERROR/ Problem with map", map);
+		print_err("ERROR/ You got no initial pos for your start", map);
 	verif_wall(map);
 }

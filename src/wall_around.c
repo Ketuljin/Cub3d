@@ -6,7 +6,7 @@
 /*   By: jkerthe <jkerthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 11:12:14 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/05 17:57:35 by jkerthe          ###   ########.fr       */
+/*   Updated: 2025/06/10 13:58:12 by jkerthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ int	check_wall(t_map *map, int y, int i)
 	while (map->content[y][j])
 	{
 		if (j == i && map->content[y][j] == ' ')
-			print_err("ERROR/ Problem with map", map);
+			print_err("ERROR/ Your map need to be close", map);
 		if (j == i && map->content[y][j] == '1')
 			return (0);
 		j++;
 	}
 	if (j < i)
 	{
-		print_err("ERROR/ Problem with map", map);
+		print_err("ERROR/ Your map need to be close", map);
 		return (1);
 	}
 	return (1);
@@ -59,7 +59,7 @@ void	wall_vertical(t_map *map, int y, int i)
 		j--;
 	}
 	if (check != 2)
-		print_err("ERROR/ Problem with map", map);
+		print_err("ERROR/ Your map need to be close", map);
 }
 
 void	wall_horizontal(t_map *map, int y, int i)
@@ -88,7 +88,7 @@ void	wall_horizontal(t_map *map, int y, int i)
 		j++;
 	}
 	if (check != 2)
-		print_err("ERROR/ Problem with map", map);
+		print_err("ERROR/ Your map need to be close", map);
 }
 
 void	wall_around(t_map *map, int y, int i)

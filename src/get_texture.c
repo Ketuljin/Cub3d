@@ -6,7 +6,7 @@
 /*   By: jkerthe <jkerthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 13:12:51 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/05 16:32:09 by jkerthe          ###   ########.fr       */
+/*   Updated: 2025/06/10 14:10:05 by jkerthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	search_for_north(t_map *map, char *stock)
 		i++;
 	}
 	if (map->north == NULL)
-		print_err("Error/ No assignement for north", map);
+		print_err("Error/ No assignement for north\n", map);
 }
 
 void	search_for_south(t_map *map, char *stock)
@@ -49,7 +49,7 @@ void	search_for_south(t_map *map, char *stock)
 		i++;
 	}
 	if (map->south == NULL)
-		print_err("Error/ No assignement for south", map);
+		print_err("Error/ No assignement for south\n", map);
 }
 
 void	search_for_west(t_map *map, char *stock)
@@ -69,7 +69,7 @@ void	search_for_west(t_map *map, char *stock)
 		i++;
 	}
 	if (map->west == NULL)
-		print_err("Error/ No assignement for west", map);
+		print_err("Error/ No assignement for west\n", map);
 }
 
 void	search_for_east(t_map *map, char *stock)
@@ -89,5 +89,5 @@ void	search_for_east(t_map *map, char *stock)
 		i++;
 	}
 	if (map->east == NULL)
-		print_err("Error/ No assignement for east", map);
+		print_err("Error/ No assignement for east\n", map);
 }

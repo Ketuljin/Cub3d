@@ -6,7 +6,7 @@
 /*   By: jkerthe <jkerthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 13:57:09 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/05 16:23:13 by jkerthe          ###   ########.fr       */
+/*   Updated: 2025/06/10 15:48:21 by jkerthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	verif_end_line(char	*stock, int i)
 	return (1);
 }
 
-static char	*copy_word(char *stock, int start, int len, t_map *map)
+static char	*copy_word(char *stock, int start, int len)
 {
 	char	*word;
 	int		j;
@@ -54,20 +54,19 @@ static char	*copy_word(char *stock, int start, int len, t_map *map)
 	j = 0;
 	while (j < len)
 	{
-		if (stock[start + j] && stock[start + j] != '\n' 
+		if (stock[start + j] && stock[start + j] != '\n'
 			&& stock[start + j] != ' ' && stock[start + j] != '\t')
 		{
 			word[j] = stock[start + j];
 			j++;
 		}
 		else
-			break;
+			break ;
 	}
 	word[len] = '\0';
 	if (!verif_end_line(stock, start + j))
 	{
 		free(word);
-		print_err("ERROR/ Wrong input in the file\n", map);
 		return (NULL);
 	}
 	return (word);
@@ -85,9 +84,12 @@ char	*stock_texture(char *stock, int i, t_map *map)
 	i = skip_spaces_newlines(stock, i);
 	start = i;
 	len = word_length(stock, i);
-	file_name = copy_word(stock, start, len, map);
+	file_name = copy_word(stock, start, len);
 	if (!file_name)
+	{
+		print_err("ERROR/ Wrong input in the file\n", map);
 		return (NULL);
+	}
 	if (map->i < start + len)
 		map->i = start + len;
 	return (file_name);

@@ -6,7 +6,7 @@
 /*   By: jkerthe <jkerthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 08:05:49 by jkerthe           #+#    #+#             */
-/*   Updated: 2023/10/31 07:51:30 by jkerthe          ###   ########.fr       */
+/*   Updated: 2025/06/10 14:10:17 by jkerthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,3 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	*new_str = '\0';
 	return (substr);
 }
-/*
-int main() 
-{
-
-    const char * original = "miam le chocolat";
-    char *res = ft_substr(original, 0, 17);
-
-    printf( "Phrase racourcie : %s", res  );
-}
-*/

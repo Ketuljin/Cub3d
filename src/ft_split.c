@@ -6,7 +6,7 @@
 /*   By: jkerthe <jkerthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 11:26:05 by jkerthe           #+#    #+#             */
-/*   Updated: 2023/10/31 08:02:43 by jkerthe          ###   ########.fr       */
+/*   Updated: 2025/06/10 15:16:56 by jkerthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,23 +70,3 @@ char	**ft_split(char const *s, char c)
 	creatab (split, s, c, tw);
 	return (split);
 }
-/*
-int main(void) {
-    int i = 0;
-    int j = 0;
-    char *str = "LaZmaison";
-    char **split = ft_split(str, ' ');
-
-    while (split[j] != NULL) {
-        i = 0;
-        while (split[j][i] != '\0') {
-            write(1, &split[j][i], 1);
-            i++;
-        }
-        j++;
-    }
-
-    //free_split(split); // Free allocated memory
-    return 0;
-}
-*/

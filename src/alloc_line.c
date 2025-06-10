@@ -6,7 +6,7 @@
 /*   By: jkerthe <jkerthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 13:38:52 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/03 16:31:12 by jkerthe          ###   ########.fr       */
+/*   Updated: 2025/06/10 15:16:47 by jkerthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,12 @@ void	alloc_line(t_map *map, char *stock)
 	{
 		len = line_length(stock, i);
 		if (!alloc_line_content(map, line, len))
+		{
+			free_malloc(map->content, line + 1);
+			map->content = NULL;
+			print_err("ERROR/ Malloc problem with map->content\n", map);
 			return ;
+		}
 		line++;
 		i += len;
 		if (stock[i] == '\n')

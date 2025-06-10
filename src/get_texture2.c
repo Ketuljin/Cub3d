@@ -6,7 +6,7 @@
 /*   By: jkerthe <jkerthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 15:03:46 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/05 17:06:53 by jkerthe          ###   ########.fr       */
+/*   Updated: 2025/06/10 15:17:05 by jkerthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	search_for_floor(t_map *map, char *stock)
 		i++;
 	}
 	if (map->floor == NULL)
-		print_err("Error/ No assignement for floor", map);
+		print_err("Error/ No assignement for floor\n", map);
 }
 
 void	search_for_ceiling(t_map *map, char *stock)
@@ -49,10 +49,8 @@ void	search_for_ceiling(t_map *map, char *stock)
 		i++;
 	}
 	if (map->ceiling == NULL)
-		print_err("Error/ No assignement for ceiling", map);
+		print_err("Error/ No assignement for ceiling\n", map);
 }
-
-
 
 void	search_for_texture(t_map *map, char *stock)
 {
