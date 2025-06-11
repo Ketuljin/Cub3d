@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 13:57:09 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/06 17:34:25 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/11 13:19:38 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	word_length(char *stock, int i)
 	return (len);
 }
 
-int	verif_end_line(char	*stock, int i)
+static int	verif_end_line(char	*stock, int i)
 {
 	while (stock[i] && stock[i] != '\n')
 	{

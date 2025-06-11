@@ -6,13 +6,13 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 10:59:59 by rureshet          #+#    #+#             */
-/*   Updated: 2025/06/10 17:31:02 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/11 13:13:28 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	init_raycasting_info(int x, t_ray *ray, t_player *player)
+static void	init_raycasting_info(int x, t_ray *ray, t_player *player)
 {
 	init_ray(ray);
 	ray->camera_x = 2 * x / (double)WIN_WIDTH - 1;
@@ -24,7 +24,7 @@ void	init_raycasting_info(int x, t_ray *ray, t_player *player)
 	ray->deltadist_y = fabs(1 / ray->dir_y);
 }
 
-void	set_dda(t_ray *ray, t_player *player)
+static void	set_dda(t_ray *ray, t_player *player)
 {
 	if(ray->dir_x < 0)
 	{
@@ -48,11 +48,10 @@ void	set_dda(t_ray *ray, t_player *player)
 	}
 }
 
-void	make_dda(t_game *game, t_ray *ray)
+static void	make_dda(t_game *game, t_ray *ray)
 {
 	int hit;
 
-	//game->map = game->mapinfo.content;
 	hit = 0;
 	while (hit == 0)
 	{
@@ -77,7 +76,7 @@ void	make_dda(t_game *game, t_ray *ray)
 	}
 }
 
-void	line_height(t_ray *ray, t_game *game, t_player *player)
+static void	line_height(t_ray *ray, t_game *game, t_player *player)
 {
 	if (ray->side == 0)
 		ray->wall_dist = (ray->sidedist_x - ray->deltadist_x);

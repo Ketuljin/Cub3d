@@ -6,13 +6,13 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 18:24:45 by rureshet          #+#    #+#             */
-/*   Updated: 2025/06/01 15:41:31 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/11 13:14:46 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	init_image(t_game *game, t_img *img, int width, int height)
+static void	init_image(t_game *game, t_img *img, int width, int height)
 {
 	init_img_zero(img);
 	img->img = mlx_new_image(game->mlx, width, height);
@@ -21,7 +21,7 @@ void	init_image(t_game *game, t_img *img, int width, int height)
 	img->addr = (int *)mlx_get_data_addr(img->img, &img->pixel_bits, &img->size_line, &img->endian);
 }
 
-void	set_image_pixel(t_img *img, int x, int y, int color)
+static void	set_image_pixel(t_img *img, int x, int y, int color)
 {
 	int	pixel;
 	
@@ -29,7 +29,7 @@ void	set_image_pixel(t_img *img, int x, int y, int color)
 	img->addr[pixel] = color;
 }
 
-void	set_frame_image_pixel(t_game *game, t_img *img, int x, int y)
+static void	set_frame_image_pixel(t_game *game, t_img *img, int x, int y)
 {
 	if (game->texture_pixels[y][x] > 0)
 		set_image_pixel(img, x, y, game->texture_pixels[y][x]);

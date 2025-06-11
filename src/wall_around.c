@@ -6,13 +6,13 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 11:12:14 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/06 17:34:25 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/11 13:26:35 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int	check_wall(t_map *map, int y, int i)
+static int	check_wall(t_map *map, int y, int i)
 {
 	int	j;
 
@@ -33,7 +33,7 @@ int	check_wall(t_map *map, int y, int i)
 	return (1);
 }
 
-void	wall_vertical(t_map *map, int y, int i)
+static void	wall_vertical(t_map *map, int y, int i)
 {
 	int	j;
 	int	check;
@@ -62,7 +62,7 @@ void	wall_vertical(t_map *map, int y, int i)
 		print_err("ERROR/ Problem with map 9", map);
 }
 
-void	wall_horizontal(t_map *map, int y, int i)
+static void	wall_horizontal(t_map *map, int y, int i)
 {
 	int	j;
 	int	check;

@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:08:35 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/10 17:30:23 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/11 13:27:42 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,128 +126,116 @@ typedef struct	s_game
 	int			win_width;
 	int			win_heght;
 	t_map		mapinfo;
-	//char		**map;
 	t_ray		ray;
 	t_player	player;
 	int			**textures;
 	int			**texture_pixels;
 }				t_game;
 
-/* init_data.c*/
+/* alloc_line.c */
+void	alloc_line(t_map *map, char *stock);
+
+/* alloc_map.c */
+void	search_for_start(t_map *map, char *stock);
+int		count_line(t_map *map, char *stock);
+void	create_map(t_map *map, char *stock);
+void	search_for_map(t_map *map, char *stock);
+
+/* errors.c   */
+void	print_err(char *str, t_map *map);
+
+/* exit.c   */
+int		exit_game(t_game *game);
+void	clean_exit(t_game *game, int code);
+
+/* free_game.c   */
+void	free_tab(void **tab);
+void	free_map(t_map *map);
+void	free_game(t_game *game);
+
+/* ft_atoi.c */
+int		ft_atoi(const char *str);
+
+/*   ft_isnumeric.c */
+int		ft_isnumeric(char *str);
+
+/*   ft_split.c */
+char	**ft_split(char const *s, char c);
+
+/*   ft_strdup.c */
+char	*ft_strdup(const char *src );
+
+/*   ft_substr.c */
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+
+/*   full_line.c */
+char	*full_line(int fd);
+
+/*   get_next_line_utils.c */
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strchr(const char *string, int searchedChar);
+void	*ft_calloc(size_t elementCount, size_t elementSize);
+size_t	ft_strlen(const char *theString);
+
+/*   get_texture_utils.c */
+void	search_for_north(t_map *map, char *stock);
+void	search_for_south(t_map *map, char *stock);
+void	search_for_west(t_map *map, char *stock);
+void	search_for_east(t_map *map, char *stock);
+
+/*   get_texture.c */
+void	search_for_texture(t_map *map, char *stock);
+
+/*   init_content.c */
+void	init_map(t_map *map);
+void	init_content(t_map *map, int fd);
+
+/* init_data.c */
 void	init_img_zero(t_img *img);
 void	init_ray(t_ray *ray);
 void	init_player(t_player *player, t_map *map);
 void	init_map(t_map *mapinfo);
 void	init_game(t_game *game);
 
-/* raycasting.c*/
-int		raycasting(t_player *player, t_game *game);
-void	render_raycast(t_game *game);
-
-
-/*   free_game.c   */
-void	free_malloc(char **stockf, int l);
-void	free_tab(void **tab);
-void	free_map(t_map *map);
-void	free_game(t_game *game);
-
-/*   exit.c   */
-int		exit_game(t_game *game);
-void	clean_exit(t_game *game, int code);
+/*   init_player_dir.c */
+void	init_player_direction(t_player *player, t_map *map);
 
 /*   init_textures.c   */
 void	update_texture_pixels(t_game *game, t_map *map, t_ray *ray, int x);
 void	init_texture_pixels(t_game *game);
 
-/*   render_texture.c   */
-void	init_texture_image(t_game *game, t_img *img, char *path);
-void	init_textutes(t_game *game);
+/*   player_move.c   */
+int		player_move(t_game *game);
 
-/*   render_frame.c   */
+/*   player_rotate.c */
+int		player_rotate(t_game *game, double rotdir);
+
+/* raycasting.c */
+int		raycasting(t_player *player, t_game *game);
+void	render_raycast(t_game *game);
+
+/*   render_frame.c */
 void	render_frame(t_game *game);
+
+/*   render_texture.c   */
+void	init_textutes(t_game *game);
 
 /*   render.c   */
 int		validate_move(t_game *game, double new_x, double new_y);
 int		render(t_game *game);
 
-/*   player_move.c   */
-int	player_move(t_game *game);
-
-/*typedef struct s_map
-{
-	char	**content; //whole map
-	int		sizeL; //nbline
-	bool	valid_content; //verif if content respect the rules
-	char	*north; //link for north texture
-	char	*south; //link for south texture
-	char	*east; //link for east texture
-	char	*west; //link for west  texture
-	char	*floor; //floor bacic
-	int		floor_color; //floor convert
-	char	*ceiling; //ceiling basic
-	int		ceiling_color; //ceiling convert
-	char	initial_position; //Where he is looking at N : North S : South E : East W:West
-	int		i;
-
-}				t_map;*/
-
-
-void	init_content(t_map *map, int fd);
-char	*full_line(int fd);
-size_t	ft_strlen(const char *theString);
-void	*ft_calloc(size_t elementCount, size_t elementSize);
-void	ft_bzero(void *s, size_t n);
-char	*ft_strchr(const char *string, int searchedChar );
-char	*ft_strjoin(char const *s1, char const *s2);
+/*   stock_texture.c */
 char	*stock_texture(char *stock, int i, t_map *map);
-void	search_for_texture(t_map *map, char *stock);
-void	search_for_east(t_map *map, char *stock);
-void	search_for_west(t_map *map, char *stock);
-void	search_for_south(t_map *map, char *stock);
-void	search_for_north(t_map *map, char *stock);
-char	*stock_texture(char *stock, int i, t_map *map);
-int		verif_floor_ceiling(char *color);
-int		ft_atoi(const char *str);
-char	**ft_split(char const *s, char c);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*ft_strdup(const char *src );
-void	search_for_map(t_map *map, char *stock);
-void	verif_map(t_map *map);
-void	wall_around(t_map *map, int y, int i);
 
-
-void	init_player_direction(t_player *player, t_map *map);
-
-
-void	init_content(t_map *map, int fd);
-char	*full_line(int fd);
-size_t	ft_strlen(const char *theString);
-void	*ft_calloc(size_t elementCount, size_t elementSize);
-void	ft_bzero(void *s, size_t n);
-char	*ft_strchr(const char *string, int searchedChar );
-char	*ft_strjoin(char const *s1, char const *s2);
-char	*stock_texture(char *stock, int i, t_map *map);
-void	search_for_texture(t_map *map, char *stock);
-void	search_for_east(t_map *map, char *stock);
-void	search_for_west(t_map *map, char *stock);
-void	search_for_south(t_map *map, char *stock);
-void	search_for_north(t_map *map, char *stock);
-int		verif_floor_ceiling(char *color);
-int		ft_atoi(const char *str);
-char	**ft_split(char const *s, char c);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*ft_strdup(const char *src );
-void	search_for_map(t_map *map, char *stock);
-void	verif_map(t_map *map);
-void	wall_around(t_map *map, int y, int i);
-void	free_malloc(char **stockf, int l);
-//void	free_all(t_map *map);
-void	print_err(char *str, t_map *map);
-void	alloc_line(t_map *map, char *stock);
-int		get_content(char c, t_map *map, int l, int i);
+/*   verif_map_utils.c */
 void	empty_line(t_map *map, int y, int i);
-int		ft_isnumeric(char *str);
-int		ft_isdigit(int c);
+int		get_content(char c, t_map *map, int l, int i);
+
+/*   verif_map.c */
+void	verif_map(t_map *map);
+
+/*   wall_around.c */
+void	wall_around(t_map *map, int y, int i);
 
 /*   DELETE THIS   */
 void	print_game_state(t_game *game);

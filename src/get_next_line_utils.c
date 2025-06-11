@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:52:38 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/07 16:53:22 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/11 12:52:20 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (res);
 }
 
-char	*ft_strchr(const char *string, int searchedChar )
+char	*ft_strchr(const char *string, int searchedChar)
 {
 	char	*str;
 
@@ -53,7 +53,7 @@ char	*ft_strchr(const char *string, int searchedChar )
 		return (NULL);
 }
 
-void	ft_bzero(void *s, size_t n)
+static void	ft_bzero(void *s, size_t n)
 {
 	char	*str;
 	size_t	i;

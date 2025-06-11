@@ -6,13 +6,13 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 11:20:28 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/09 14:21:31 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/11 13:21:45 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	verif_content(t_map *map)
+static void	verif_content(t_map *map)
 {
 	int	l;
 	int	i;
@@ -32,7 +32,7 @@ void	verif_content(t_map *map)
 	}
 }
 
-void	wall_alone(t_map *map, int y, int i)
+static void	wall_alone(t_map *map, int y, int i)
 {
 	int	check;
 
@@ -53,7 +53,7 @@ void	wall_alone(t_map *map, int y, int i)
 		print_err("ERROR/ Problem with map 2", map);
 }
 
-void	verif_wall(t_map *map)
+static void	verif_wall(t_map *map)
 {
 	int	i;
 	int	y;

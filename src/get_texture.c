@@ -5,88 +5,59 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/20 13:12:51 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/06 17:34:25 by rureshet         ###   ########.fr       */
+/*   Created: 2025/05/20 15:03:46 by jkerthe           #+#    #+#             */
+/*   Updated: 2025/06/11 12:58:36 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-void	search_for_north(t_map *map, char *stock)
+
+static void	search_for_floor(t_map *map, char *stock)
 {
 	int	i;
 
 	i = 0;
 	while (stock[i])
 	{
-		if (stock[i] == 'N' && stock[i + 1] == 'O')
+		if (stock[i] == 'F' && stock[i + 1] == ' ')
 		{
-			if (map->north != NULL)
-				print_err("Error/ 2 or more assignements for north\n", map);
+			if (map->floor != NULL)
+				print_err("Error/ 2 or more assignements for floor\n", map);
 			else
-				map->north = stock_texture(stock, i, map);
+				map->floor = stock_texture(stock, i - 1, map);
 		}
 		i++;
 	}
-	if (map->north == NULL)
-		print_err("Error/ No assignement for north", map);
+	if (map->floor == NULL)
+		print_err("Error/ No assignement for floor", map);
 }
 
-void	search_for_south(t_map *map, char *stock)
+static void	search_for_ceiling(t_map *map, char *stock)
 {
 	int	i;
 
 	i = 0;
 	while (stock[i])
 	{
-		if (stock[i] == 'S' && stock[i + 1] == 'O')
+		if (stock[i] == 'C' && stock[i + 1] == ' ')
 		{
-			if (map->south != NULL)
-				print_err("Error/ 2 or more assignements for south\n", map);
+			if (map->ceiling != NULL)
+				print_err("Error/ 2 or more assignements for ceiling\n", map);
 			else
-				map->south = stock_texture(stock, i, map);
+				map->ceiling = stock_texture(stock, i - 1, map);
 		}
 		i++;
 	}
-	if (map->south == NULL)
-		print_err("Error/ No assignement for south", map);
+	if (map->ceiling == NULL)
+		print_err("Error/ No assignement for ceiling", map);
 }
 
-void	search_for_west(t_map *map, char *stock)
+void	search_for_texture(t_map *map, char *stock)
 {
-	int	i;
-
-	i = 0;
-	while (stock[i])
-	{
-		if (stock[i] == 'W' && stock[i + 1] == 'E')
-		{
-			if (map->west != NULL)
-				print_err("Error/ 2 or more assignements for west\n", map);
-			else
-				map->west = stock_texture(stock, i, map);
-		}
-		i++;
-	}
-	if (map->west == NULL)
-		print_err("Error/ No assignement for west", map);
-}
-
-void	search_for_east(t_map *map, char *stock)
-{
-	int	i;
-
-	i = 0;
-	while (stock[i])
-	{
-		if (stock[i] == 'E' && stock[i + 1] == 'A')
-		{
-			if (map->east != NULL)
-				print_err("Error/ 2 or more assignements for east\n", map);
-			else
-				map->east = stock_texture(stock, i, map);
-		}
-		i++;
-	}
-	if (map->east == NULL)
-		print_err("Error/ No assignement for east", map);
+	search_for_north(map, stock);
+	search_for_south(map, stock);
+	search_for_west(map, stock);
+	search_for_east(map, stock);
+	search_for_floor(map, stock);
+	search_for_ceiling(map, stock);
 }

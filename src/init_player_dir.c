@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 13:03:04 by rureshet          #+#    #+#             */
-/*   Updated: 2025/05/27 21:07:50 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/11 13:05:55 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	init_player_direction(t_player *player, t_map *map)
 		player->dir_y = -1;
 		player->plane_x = 0.66;
 		player->plane_y = 0;
-
 	}
 	else if (player->dir == 'S')
 	{

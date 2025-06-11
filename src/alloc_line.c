@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 13:38:52 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/09 14:22:26 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/11 12:28:39 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,4 @@ void	alloc_line(t_map *map, char *stock)
 			i++;
 	}
 	map->sizeL = line;
-	printf("sizeL = %d\n", map->sizeL);
 }

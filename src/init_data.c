@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 11:04:52 by rureshet          #+#    #+#             */
-/*   Updated: 2025/06/10 17:30:48 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/11 13:04:09 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,38 +57,14 @@ void	init_player(t_player *player, t_map *map)
 	player->rotate = 0;
 }
 
-// void	init_map(t_map *mapinfo)
-// {
-// 	char *content_test[] = {
-// 		"11111",
-// 		"10001",
-// 		"1N011",
-// 		"10001",
-// 		"11111",
-// 		NULL
-// 	};
-
-// 	mapinfo->content = content_test;
-// 	mapinfo->sizeL = 0;
-// 	mapinfo->valid_content = true;
-// 	mapinfo->north = NULL;
-// 	mapinfo->south = NULL;
-// 	mapinfo->east = NULL;
-// 	mapinfo->west = NULL;
-// 	mapinfo->floor = NULL;
-// 	mapinfo->ceiling = NULL;
-// }
-
 void	init_game(t_game *game)
 {
 	game->mlx = NULL;
 	game->win = NULL;
 	game->win_width = WIN_WIDTH;
 	game->win_heght = WIN_HEIGHT;
-	//init_map(&game->mapinfo);
 	init_player(&game->player, &game->mapinfo);
 	init_ray(&game->ray);
-	//game->map = NULL;
 	game->texture_pixels = NULL;
 	game->textures = NULL;
 }

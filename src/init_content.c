@@ -6,59 +6,21 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 12:06:25 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/10 17:36:39 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/11 13:02:08 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-
-
 void	init_map(t_map *map)
 {
-	// const char	*content_test[] = {
-	// 	"11111111111",
-	// 	"10010000001",
-	// 	"10000000001",
-	// 	"11000000001",
-	// 	"1000E000011",
-	// 	"10000000001",
-	// 	"11111111111",
-	// 	NULL
-	// };
-	// int	lines;
-	// int	i;
-
-	// lines = 0;
-	// while (content_test[lines])
-	// 	lines++;
-
-	map->content = NULL;//malloc(sizeof(char *) * (lines + 1));
-	// if (!map->content)
-	// 	return;
-	// i = 0;
-	// while (i < lines)
-	// {
-	// 	map->content[i] = strdup(content_test[i]);
-	// 	i++;
-	// }
-	// map->content[lines] = NULL;
-
+	map->content = NULL;
 	map->north = NULL;
 	map->east = NULL;
 	map->south = NULL;
 	map->west = NULL;
-
-	// map->north = "textures/wolfenstein/colorstone.xpm";
-	// map->east = "textures/wolfenstein/redbrick.xpm";
-	// map->south = "textures/wolfenstein/wood.xpm";
-	// map->west = "textures/wolfenstein/mossy.xpm";
-
 	map->floor = NULL;
-	// map->floor_color = 0x545454;
 	map->ceiling = NULL;
-	// map->ceiling_color = 0x5CE1E6;
-
 	map->valid_content = true;
 	map->map_width = 0;
 	map->initial_position = '1';
@@ -70,11 +32,11 @@ void	init_map(t_map *map)
 	map->pos = 0.0;
 	map->x = 0;
 	map->y = 0;
-	map->sizeL = 0;//lines;
+	map->sizeL = 0;
 	map->i = 0;
 }
 
-void	verif_file(t_map *map)
+static void	verif_file(t_map *map)
 {
 	if (map->valid_content == false)
 		return ;
@@ -88,7 +50,7 @@ void	verif_file(t_map *map)
 		print_err("Error/ West: No such file or directory\n", map);
 }
 
-int	verif_floor_ceiling(char *color)
+static int	verif_floor_ceiling(char *color)
 {
 	char	**full_color;
 	int		r;
@@ -113,7 +75,7 @@ int	verif_floor_ceiling(char *color)
 	{
 		if (!ft_isnumeric(full_color[j]))
 		{
-			free_malloc(full_color, 3);
+			free_tab((void **)full_color);
 			return (-1);
 		}
 		j++;
@@ -121,13 +83,13 @@ int	verif_floor_ceiling(char *color)
 	r = ft_atoi(full_color[0]);
 	g = ft_atoi(full_color[1]);
 	b = ft_atoi(full_color[2]);
-	free_malloc(full_color, 3);
+	free_tab((void **)full_color);
 	if (r < 0 || g < 0 || b < 0 || r > 255 || g > 255 || b > 255)
 		return (-1);
 	return ((r << 16) | (g << 8) | b);
 }
 
-void	verif_useless_content(t_map *map, char *stock)
+static void	verif_useless_content(t_map *map, char *stock)
 {
 	int	i;
 	int	count_line;

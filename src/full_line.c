@@ -6,13 +6,13 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 13:29:33 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/07 17:13:28 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/11 12:49:24 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-char	*ft_free(char *buffer, char *buf)
+static char	*ft_free(char *buffer, char *buf)
 {
 	char	*temp;
 
@@ -21,7 +21,7 @@ char	*ft_free(char *buffer, char *buf)
 	return (temp);
 }
 
-char	*read_file(int fd, char *res)
+static char	*read_file(int fd, char *res)
 {
 	char	*buffer;
 	int		byte_read;
