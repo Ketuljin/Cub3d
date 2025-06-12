@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 15:03:46 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/11 12:58:36 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/12 16:52:40 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,10 @@ static void	search_for_floor(t_map *map, char *stock)
 			if (map->floor != NULL)
 				print_err("Error/ 2 or more assignements for floor\n", map);
 			else
-				map->floor = stock_texture(stock, i - 1, map);
+				map->floor = stock_color(stock, i, map);
 		}
 		i++;
 	}
-	if (map->floor == NULL)
-		print_err("Error/ No assignement for floor", map);
 }
 
 static void	search_for_ceiling(t_map *map, char *stock)
@@ -44,12 +42,10 @@ static void	search_for_ceiling(t_map *map, char *stock)
 			if (map->ceiling != NULL)
 				print_err("Error/ 2 or more assignements for ceiling\n", map);
 			else
-				map->ceiling = stock_texture(stock, i - 1, map);
+				map->ceiling = stock_color(stock, i, map);
 		}
 		i++;
 	}
-	if (map->ceiling == NULL)
-		print_err("Error/ No assignement for ceiling", map);
 }
 
 void	search_for_texture(t_map *map, char *stock)

@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 13:12:51 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/11 12:55:51 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/12 13:34:11 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ void	search_for_north(t_map *map, char *stock)
 		}
 		i++;
 	}
-	if (map->north == NULL)
-		print_err("Error/ No assignement for north", map);
 }
 
 void	search_for_south(t_map *map, char *stock)
@@ -48,8 +46,6 @@ void	search_for_south(t_map *map, char *stock)
 		}
 		i++;
 	}
-	if (map->south == NULL)
-		print_err("Error/ No assignement for south", map);
 }
 
 void	search_for_west(t_map *map, char *stock)
@@ -68,8 +64,6 @@ void	search_for_west(t_map *map, char *stock)
 		}
 		i++;
 	}
-	if (map->west == NULL)
-		print_err("Error/ No assignement for west", map);
 }
 
 void	search_for_east(t_map *map, char *stock)
@@ -88,6 +82,4 @@ void	search_for_east(t_map *map, char *stock)
 		}
 		i++;
 	}
-	if (map->east == NULL)
-		print_err("Error/ No assignement for east", map);
 }

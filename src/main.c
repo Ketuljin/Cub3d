@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:29:42 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/10 17:27:38 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/12 18:20:27 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,8 +125,13 @@ int	main(int argc, char **argv)
 	{
 		fd = check_name(argv[1]);
 		if (fd <= 0)
+		{
+			printf("You have to give a file.cub\n");
 			return (1);
+		}
+		init_game(&game);
 		init_content(&game.mapinfo, fd);
+		debug_display_mapinfo(&game);
 		if (game.mapinfo.valid_content == false)
 		{
 			//free_all(&game.mapinfo);
@@ -139,10 +144,11 @@ int	main(int argc, char **argv)
 	}
 	init_game(&game);
 	init_player_direction(&game.player, &game.mapinfo);
-	// debug_display_data(&game);
+	//debug_display_data(&game);
 	if(init_mlx(&game) == FAILURE)
 		return (FAILURE);
 	init_textutes(&game);
+	
 	
 	render_raycast(&game);
 	listener(&game);

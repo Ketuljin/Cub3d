@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 11:12:14 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/11 13:26:35 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/12 17:51:31 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@ static int	check_wall(t_map *map, int y, int i)
 	int	j;
 
 	j = 0;
+	if (y >= map->j)
+		return (0);
 	while (map->content[y][j])
 	{
-		if (j == i && map->content[y][j] == ' ')
-			print_err("ERROR/ Problem with map 7", map);
 		if (j == i && map->content[y][j] == '1')
 			return (0);
 		j++;
 	}
 	if (j < i)
 	{
-		print_err("ERROR/ Problem with map 8", map);
+		print_err("ERROR/ Empty line in map\n", map);
 		return (1);
 	}
 	return (1);
@@ -59,7 +59,7 @@ static void	wall_vertical(t_map *map, int y, int i)
 		j--;
 	}
 	if (check != 2)
-		print_err("ERROR/ Problem with map 9", map);
+		print_err("ERROR/ You need to close your map with wall\n", map);
 }
 
 static void	wall_horizontal(t_map *map, int y, int i)
@@ -88,7 +88,7 @@ static void	wall_horizontal(t_map *map, int y, int i)
 		j++;
 	}
 	if (check != 2)
-		print_err("ERROR/ Problem with map 10", map);
+		print_err("ERROR/ You need to close your map with wall\n", map);
 }
 
 void	wall_around(t_map *map, int y, int i)

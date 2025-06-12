@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 15:40:59 by rureshet          #+#    #+#             */
-/*   Updated: 2025/06/11 13:17:03 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/12 14:28:55 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ static void	init_texture_image(t_game *game, t_img *img, char *path)
 	init_img_zero(img);
 	img->img = mlx_xpm_file_to_image(game->mlx, path, &game->mapinfo.size, &game->mapinfo.size);
 	if (img->img == NULL)
+	{
+		print_err("ERROR/ Bad texture file\n", &game->mapinfo);
 		clean_exit(game, 1);
+	}
 	img->addr = (int *)mlx_get_data_addr(img->img, &img->pixel_bits, &img->size_line, &img->endian);
 }
 

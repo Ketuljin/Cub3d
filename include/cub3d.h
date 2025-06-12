@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:08:35 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/11 13:27:42 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/12 18:10:37 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ typedef struct	s_map
 	int		y;
 	int		map_width;
 	int		i;
+	int		j;
 }				t_map;
 
 typedef struct	s_ray
@@ -228,7 +229,7 @@ int		render(t_game *game);
 char	*stock_texture(char *stock, int i, t_map *map);
 
 /*   verif_map_utils.c */
-void	empty_line(t_map *map, int y, int i);
+void	empty_line(t_map *map);
 int		get_content(char c, t_map *map, int l, int i);
 
 /*   verif_map.c */
@@ -241,4 +242,9 @@ void	wall_around(t_map *map, int y, int i);
 void	print_game_state(t_game *game);
 void	debug_display_data( t_game *data);
 
+char	*ft_strrchr(const char *string, int s);
+char	value_pos(t_map *map, int y, int i);
+void	free_malloc(char **stockf, int l);
+void	debug_display_mapinfo( t_game *data);
+char	*stock_color(char *stock, int i, t_map *map);
 #endif

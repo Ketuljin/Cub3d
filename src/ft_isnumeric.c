@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 11:37:16 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/11 12:35:50 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/12 17:11:44 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,13 @@ int	ft_isnumeric(char *str)
 	int	i;
 
 	i = 0;
+	if (str == NULL)
+		return (1);
 	if (str[i] == '-')
 		i++;
 	while (str[i])
 	{
-		if (!ft_isdigit(str[i]))
+		if (!ft_isdigit(str[i]) && str[i] != '\t' && str[i] != ' ')
 			return (0);
 		i++;
 	}

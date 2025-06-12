@@ -1,13 +1,13 @@
-   WE                            textures/wolfenstein/grey_stone.xpm
-NO      textures/wolfenstein/purple_stone.xpm
+   WE                            textures/ruslan/3.xpm
+NO      textures/ruslan/1.xpm
 
 
 
-SO textures/wolfenstein/red_brick.xpm
+SO textures/ruslan/2.xpm
 
 F      17,    38,     64
 
-EA textures/wolfenstein/wood.xpm
+EA textures/ruslan/4.xpm
 
 
 

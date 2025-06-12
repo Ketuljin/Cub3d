@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 11:20:28 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/11 13:21:45 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/12 18:15:39 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,38 +19,19 @@ static void	verif_content(t_map *map)
 
 	i = 0;
 	l = 0;
-	while (l < map->sizeL)
+	if (map->sizeL <= 2)
+		print_err("ERROR/ Map too small\n", map);
+	while (l < map->sizeL-1)
 	{
 		while (map->content[l][i] != '\0')
 		{
 			if (!get_content(map->content[l][i], map, l, i))
-				print_err("ERROR/ Problem with map 1", map);
+				print_err("ERROR/ In your map you can only have : 10SWEN\n", map);
 			i++;
 		}
 		l++;
 		i = 0;
 	}
-}
-
-static void	wall_alone(t_map *map, int y, int i)
-{
-	int	check;
-
-	check = 0;
-	if (y < map->sizeL && i < (int)ft_strlen(map->content[y + 1]))
-		if (map->content[y + 1][i] != ' ' && map->content[y + 1][i] != '\0')
-			check = 1;
-	if (y > 0 && i < (int)ft_strlen(map->content[y - 1]))
-		if (map->content[y - 1][i] != ' ' && map->content[y - 1][i] != '\0')
-			check = 1;
-	if (i > 0)
-		if (map->content[y][i - 1] != ' ' && map->content[y][i - 1] != '\0')
-			check = 1;
-	if (i + 1 < (int)ft_strlen(map->content[y]))
-		if (map->content[y][i + 1] != ' ' && map->content[y][i + 1] != '\0')
-			check = 1;
-	if (check == 0)
-		print_err("ERROR/ Problem with map 2", map);
 }
 
 static void	verif_wall(t_map *map)
@@ -60,14 +41,15 @@ static void	verif_wall(t_map *map)
 
 	y = 0;
 	i = 0;
+
 	while (y < map->sizeL - 1)
 	{
 		while (map->content[y][i])
 		{
+			if (y >= map->j)
+				break ;
 			if (map->content[y][i] != '1' && map->content[y][i] != ' ')
 				wall_around(map, y, i);
-			if (map->content[y][i] == '1')
-				wall_alone(map, y, i);
 			if (map->valid_content == false)
 				break ;
 			i++;
@@ -78,10 +60,61 @@ static void	verif_wall(t_map *map)
 	
 }
 
+void	last_map_content(t_map *map)
+{
+	int	i;
+	int	j;
+
+	j = 0;
+	i = 0;
+	while (map->sizeL > j)
+	{
+		while (map->content[j][i])
+		{
+			if (map->content[j][i] != '\t' && map->content[j][i] != ' ' && map->content[j][i] != '\n')
+			{
+				map->i = i;
+				map->j = j;
+			}
+			i++;
+		}
+		i = 0;
+		j++;
+	}
+	map->j++;
+}
+
+void	empty_line(t_map *map)
+{
+	int	x;
+	int empty;
+	int y;
+
+	y = 0;
+	empty = 0;
+	x = 0;
+	while (y < map->j)
+	{
+		while (map->content[y][x] != '\0')
+		{
+			if (map->content[y][x] !=  ' ' && map->content[y][x] != '\n' && map->content[y][x] != '\t')
+				empty = 1;
+			x++;
+		}
+		if (empty == 0)
+			print_err("ERROR/ You have an empty line in your map\n", map);
+		empty = 1;
+		x = 0;
+		y++;
+	}
+}
+
 void	verif_map(t_map *map)
 {
+	last_map_content(map);
+	empty_line(map);
 	verif_content(map);
 	if (map->initial_position == '1')
-		print_err("ERROR/ Problem with map 3", map);
+		print_err("ERROR/ No player\n", map);
 	verif_wall(map);
 }

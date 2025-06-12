@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:30:06 by rureshet          #+#    #+#             */
-/*   Updated: 2025/06/11 12:21:41 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/12 15:35:55 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,22 @@ void	free_tab(void **tab)
 		i++;
 	}
 	free(tab);
+	tab = NULL;
+}
+
+void	free_malloc(char **stockf, int l)
+{
+	int	y;
+
+	y = 0;
+	if (stockf == NULL)
+		return ;
+	while (y < l)
+	{
+		free (stockf[y]);
+		y++;
+	}
+	free (stockf);
 }
 
 void	free_map(t_map *map)
@@ -44,7 +60,7 @@ void	free_map(t_map *map)
 		free(map->ceiling);
 	if (map->content)
 	{
-		free_tab((void **)map->content);
+		free_malloc(map->content, map->sizeL);
 		map->content = NULL;
 	}
 		

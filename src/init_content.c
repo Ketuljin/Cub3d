@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 12:06:25 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/11 13:02:08 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/12 18:27:54 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	init_map(t_map *map)
 	map->west = NULL;
 	map->floor = NULL;
 	map->ceiling = NULL;
+	map->floor_color = -1;
+	map->ceiling_color = -1; 
 	map->valid_content = true;
 	map->map_width = 0;
 	map->initial_position = '1';
@@ -34,21 +36,41 @@ void	init_map(t_map *map)
 	map->y = 0;
 	map->sizeL = 0;
 	map->i = 0;
+	map->j = 0;
 }
 
-static void	verif_file(t_map *map)
+int	extention_texture(char	*str, t_map *map)
+{
+	char	*xpm;
+	char	*ext;
+
+	xpm = ".xpm";
+	ext = ft_strrchr(str, '.');
+	if (ext == NULL)
+	{
+		print_err("ERROR/ Your texture need to be .xpm", map);
+		return (0);
+	}
+	if (strcmp(ext, xpm) == 0)
+		return (1);
+	print_err("ERROR/ Your texture need to be .xpm", map);
+	return (0);
+}
+
+void	verif_file(t_map *map)
 {
 	if (map->valid_content == false)
 		return ;
-	if (access(map->north, R_OK) != 0)
+	if (!extention_texture(map->north, map) || access(map->north, R_OK) != 0)
 		print_err("Error/ North: No such file or directory\n", map);
-	if (access(map->south, R_OK) != 0)
+	if (!extention_texture(map->south, map) || access(map->south, R_OK) != 0)
 		print_err("Error/ South: No such file or directory\n", map);
-	if (access(map->east, R_OK) != 0)
+	if (!extention_texture(map->east, map) || access(map->east, R_OK) != 0)
 		print_err("Error/ East: No such file or directory\n", map);
-	if (access(map->west, R_OK) != 0)
+	if (!extention_texture(map->west, map) || access(map->west, R_OK) != 0)
 		print_err("Error/ West: No such file or directory\n", map);
 }
+
 
 static int	verif_floor_ceiling(char *color)
 {
@@ -110,8 +132,30 @@ static void	verif_useless_content(t_map *map, char *stock)
 		}
 		i++;
 	}
-	if (count_line > 6)
-		print_err("ERROR/ wrong input\n", map);
+	//if (count_line > 6)
+	//	print_err("ERROR/ wrong input\n", map);
+}
+
+int	check_error(t_map *map, char *stock)
+{
+	if (map->floor == NULL && map->ceiling == NULL && map->north == NULL && map->south == NULL
+			&& map->east == NULL && map->west == NULL && stock[0] == '\0')
+		return (print_err("ERROR/ Empty file\n", map), 1);
+	if (map->north == NULL)
+		return (print_err("ERROR/ North missing\n", map), 1);
+	if (map->south == NULL)
+		return (print_err("ERROR/ South missing\n", map), 1);
+	if (map->west == NULL)
+		return (print_err("ERROR/ West missing\n", map) ,1);
+	if (map->east == NULL)
+		return (print_err("ERROR/ East missing\n", map), 1);
+	if (map->floor == NULL)
+		return (print_err("ERROR/ Floor missing\n", map), 1);
+	if (map->ceiling == NULL)
+		return (print_err("ERROR/ Ceiling missing\n", map), 1);
+	if (stock[0] == '\0')
+		return (print_err("ERROR/ There is no map\n", map), 1);
+	return (0);
 }
 
 void	init_content(t_map *map, int fd)
@@ -121,6 +165,11 @@ void	init_content(t_map *map, int fd)
 	stock = full_line(fd);
 	init_map(map);
 	search_for_texture(map, stock);
+	if (check_error(map, stock))
+	{
+		free(stock);
+		return ;
+	}
 	verif_file(map);
 	verif_useless_content(map, stock);
 	if (map->floor != NULL)
@@ -130,6 +179,11 @@ void	init_content(t_map *map, int fd)
 	if (map->ceiling_color == -1 || map->floor_color == -1)
 		print_err("ERROR/ Problem with color ceil/floor\n", map);
 	search_for_map(map, stock);
+	if (map->content == NULL)
+	{
+		free(stock);
+		return ;
+	}
 	verif_map(map);
 	free(stock);
 }
