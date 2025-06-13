@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 18:24:45 by rureshet          #+#    #+#             */
-/*   Updated: 2025/06/11 13:14:46 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/13 16:15:53 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,14 @@ static void	init_image(t_game *game, t_img *img, int width, int height)
 	img->img = mlx_new_image(game->mlx, width, height);
 	if (img->img == NULL)
 		clean_exit(game, 1);
-	img->addr = (int *)mlx_get_data_addr(img->img, &img->pixel_bits, &img->size_line, &img->endian);
+	img->addr = (int *)mlx_get_data_addr(img->img, &img->pixel_bits,
+			&img->size_line, &img->endian);
 }
 
 static void	set_image_pixel(t_img *img, int x, int y, int color)
 {
 	int	pixel;
-	
+
 	pixel = y * (img->size_line / 4) + x;
 	img->addr[pixel] = color;
 }

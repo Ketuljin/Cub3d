@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:30:06 by rureshet          #+#    #+#             */
-/*   Updated: 2025/06/12 15:35:55 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/13 16:39:19 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,9 @@ void	free_map(t_map *map)
 		free(map->ceiling);
 	if (map->content)
 	{
-		free_malloc(map->content, map->sizeL);
+		free_malloc(map->content, map->size_l);
 		map->content = NULL;
 	}
-		
 }
 
 void	free_game(t_game *game)
@@ -74,4 +73,3 @@ void	free_game(t_game *game)
 		free_tab((void **)game->texture_pixels);
 	free_map(&game->mapinfo);
 }
-

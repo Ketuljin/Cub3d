@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:08:35 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/12 18:10:37 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/13 16:40:58 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,8 @@
 # define SUCCESS 0
 # define FAILURE 1
 
-// # define WIN_WIDTH 320
-// # define WIN_HEIGHT 200
-
 # define WIN_WIDTH 640
 # define WIN_HEIGHT 480
-
-// # define WIN_WIDTH 1024
-// # define WIN_HEIGHT 768
 
 # define BUFFER_SIZE 15
 # define TEX_SIZE 64
@@ -48,7 +42,7 @@ enum e_texture_indexes
 	WEST = 3
 };
 
-typedef struct	s_img
+typedef struct s_img
 {
 	void	*img;
 	int		*addr;
@@ -57,22 +51,21 @@ typedef struct	s_img
 	int		endian;
 }				t_img;
 
-typedef struct	s_map
+typedef struct s_map
 {
 	char	**content;
-	int		sizeL;
+	int		size_l;
 	bool	valid_content;
 	char	*north;
 	char	*south;
 	char	*east;
 	char	*west;
-	char	*floor; //floor bacic
-	long	floor_color; //floor convert
-	char	*ceiling; //ceiling basic
-	long	ceiling_color; //ceiling convert
-	char	initial_position; //Where he is looking at N : North S : South E : East W:West
-	int		initial_posX;
-	int		initial_posY;
+	char	*floor;
+	long	floor_color;
+	char	*ceiling;
+	char	initial_position;
+	int		initial_pos_x;
+	int		initial_pos_y;
 	int		index;
 	int		size;
 	double	step;
@@ -84,7 +77,7 @@ typedef struct	s_map
 	int		j;
 }				t_map;
 
-typedef struct	s_ray
+typedef struct s_ray
 {
 	double	camera_x;
 	double	dir_x;
@@ -105,7 +98,7 @@ typedef struct	s_ray
 	int		draw_end;
 }				t_ray;
 
-typedef struct	s_player
+typedef struct s_player
 {
 	char	dir;
 	double	pos_x;
@@ -120,7 +113,7 @@ typedef struct	s_player
 	int		rotate;
 }				t_player;
 
-typedef struct	s_game
+typedef struct s_game
 {
 	void		*mlx;
 	void		*win;

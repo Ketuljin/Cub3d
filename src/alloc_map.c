@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 11:14:33 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/12 18:25:19 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/13 16:39:19 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,9 @@ int	count_line(t_map *map, char *stock)
 	{
 		if (stock[i] == '\n')
 			stop++;
-		//if (stock[0] == '\n')
-		//	break;
 		i++;
 	}
-	if (stock[i-1] != '\n')
+	if (stock[i - 1] != '\n')
 		stop++;
 	return (stop);
 }
@@ -71,7 +69,7 @@ void	create_map(t_map *map, char *stock)
 		}
 		i++;
 	}
-	if (stock[i] == '\0' && stock [i-1] != '\n')
+	if (stock[i] == '\0' && stock [i - 1] != '\n')
 		row++;
 	map->content[row] = NULL;
 }
@@ -84,8 +82,8 @@ void	search_for_map(t_map *map, char *stock)
 		print_err("ERROR/ There is no map", map);
 		return ;
 	}
-	map->sizeL = count_line(map, stock);
-	map->content = malloc((map->sizeL +1) * sizeof(char *));
+	map->size_l = count_line(map, stock);
+	map->content = malloc((map->size_l +1) * sizeof(char *));
 	if (!map->content)
 		return ;
 	alloc_line(map, stock);

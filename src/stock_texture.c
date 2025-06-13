@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 13:57:09 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/12 17:08:26 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/13 16:00:40 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,9 @@ static char	*copy_word(char *stock, int start, int len, t_map *map)
 			j++;
 		}
 		else
-			break;
+			break ;
 	}
 	word[len] = '\0';
-	
 	if (!verif_end_line(stock, start + j))
 	{
 		free(word);
@@ -95,9 +94,6 @@ char	*stock_texture(char *stock, int i, t_map *map)
 	return (file_name);
 }
 
-
-
-
 static char	*copy_color(char *stock, int start, int len)
 {
 	char	*word;
@@ -115,21 +111,11 @@ static char	*copy_color(char *stock, int start, int len)
 			j++;
 		}
 		else
-			break;
+			break ;
 	}
 	word[len] = '\0';
-	
-	/*
-	if (!verif_end_line(stock, start + j))
-	{
-		free(word);
-		print_err("ERROR/ Wrong input in the file\n", map);
-		return (NULL);
-	}*/
 	return (word);
 }
-
-
 
 static int	color_length(char *stock, int i)
 {
@@ -138,8 +124,8 @@ static int	color_length(char *stock, int i)
 	len = 0;
 	while (stock[i] && stock[i] != '\n')
 	{
-			i++;
-			len++;
+		i++;
+		len++;
 	}
 	return (len);
 }

@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 11:12:14 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/12 17:51:31 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/13 16:39:19 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	wall_vertical(t_map *map, int y, int i)
 
 	check = 0;
 	j = y;
-	while (y < map->sizeL)
+	while (y < map->size_l)
 	{
 		if (!check_wall(map, y, i))
 		{

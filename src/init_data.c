@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 11:04:52 by rureshet          #+#    #+#             */
-/*   Updated: 2025/06/11 13:04:09 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/13 16:40:10 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void	init_ray(t_ray *ray)
 void	init_player(t_player *player, t_map *map)
 {
 	player->dir = map->initial_position;
-	player->pos_x = map->initial_posX + 0.5;
-	player->pos_y = map->initial_posY + 0.5;
+	player->pos_x = map->initial_pos_x + 0.5;
+	player->pos_y = map->initial_pos_y + 0.5;
 	player->dir_x = 0.0;
 	player->dir_y = 0.0;
 	player->plane_x = 0.0;

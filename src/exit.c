@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:23:24 by rureshet          #+#    #+#             */
-/*   Updated: 2025/05/29 16:08:25 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/13 16:37:01 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	exit_game(t_game *game)
 {
 	clean_exit(game, 0);
-	return(SUCCESS);
+	return (SUCCESS);
 }
 
 void	clean_exit(t_game *game, int code)

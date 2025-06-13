@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 10:59:59 by rureshet          #+#    #+#             */
-/*   Updated: 2025/06/11 13:13:28 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/13 16:39:19 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	init_raycasting_info(int x, t_ray *ray, t_player *player)
 
 static void	set_dda(t_ray *ray, t_player *player)
 {
-	if(ray->dir_x < 0)
+	if (ray->dir_x < 0)
 	{
 		ray->step_x = -1;
 		ray->sidedist_x = (player->pos_x - ray->map_x) * ray->deltadist_x;
@@ -36,7 +36,7 @@ static void	set_dda(t_ray *ray, t_player *player)
 		ray->step_x = 1;
 		ray->sidedist_x = (ray->map_x + 1.0 - player->pos_x) * ray->deltadist_x;
 	}
-	if(ray->dir_y < 0)
+	if (ray->dir_y < 0)
 	{
 		ray->step_y = -1;
 		ray->sidedist_y = (player->pos_y - ray->map_y) * ray->deltadist_y;
@@ -50,12 +50,12 @@ static void	set_dda(t_ray *ray, t_player *player)
 
 static void	make_dda(t_game *game, t_ray *ray)
 {
-	int hit;
+	int	hit;
 
 	hit = 0;
 	while (hit == 0)
 	{
-		if(ray->sidedist_x < ray->sidedist_y)
+		if (ray->sidedist_x < ray->sidedist_y)
 		{
 			ray->sidedist_x += ray->deltadist_x;
 			ray->map_x += ray->step_x;
@@ -68,10 +68,10 @@ static void	make_dda(t_game *game, t_ray *ray)
 			ray->side = 1;
 		}
 		if (ray->map_y < 0.25 || ray->map_x < 0.25
-			|| ray->map_y > game->mapinfo.sizeL - 0.25
+			|| ray->map_y > game->mapinfo.size_l - 0.25
 			|| ray->map_x > game->mapinfo.map_width - 1.25)
 			break ;
-		else if(game->mapinfo.content[ray->map_y][ray->map_x] > '0')
+		else if (game->mapinfo.content[ray->map_y][ray->map_x] > '0')
 			hit = 1;
 	}
 }

@@ -33,7 +33,7 @@ void	debug_display_mapinfo( t_game *data)
 		return;
 	}
 	printf("\n---- MAP\n");
-	printf("Map height: %d\n", data->mapinfo.sizeL);
+	printf("Map height: %d\n", data->mapinfo.size_l);
 	printf("Map width: %d\n", data->mapinfo.map_width);
 	debug_print_char_tab(data->mapinfo.content);
 	printf("\n---- TEXTURES & COLORS\n");
@@ -53,7 +53,7 @@ void	debug_display_player( t_game *data)
 	printf("Player pos: ");
 	printf("x = %f, y = %f\n", data->player.pos_x, data->player.pos_y);
 	printf("Initial pos: ");
-	printf("x = %d, y = %d\n", data->mapinfo.initial_posX, data->mapinfo.initial_posY);
+	printf("x = %d, y = %d\n", data->mapinfo.initial_pos_x, data->mapinfo.initial_pos_y);
 	printf("Player direction: %c ", data->player.dir);
 	printf("(x = %f, y = %f)\n", data->player.dir_x, data->player.dir_y);
 }
@@ -69,7 +69,7 @@ void	print_game_state(t_game *game)
 {
 	printf("win_width: %d\n", game->win_width);
 	printf("=== Map Info ===\n");
-	printf("sizeL: %d\n", game->mapinfo.sizeL);
+	printf("size_l: %d\n", game->mapinfo.size_l);
 	printf("Valid Content: %s\n", game->mapinfo.valid_content ? "true" : "false");
 	printf("North: %s\n", game->mapinfo.north);
 	printf("South: %s\n", game->mapinfo.south);
@@ -79,7 +79,7 @@ void	print_game_state(t_game *game)
 	printf("Floor Color: #%lx\n", game->mapinfo.floor_color);
 	printf("Ceiling: %s\n", game->mapinfo.ceiling);
 	printf("Ceiling Color: #%lx\n", game->mapinfo.ceiling_color);
-	printf("Initial Position: %c at (%d, %d)\n", game->mapinfo.initial_position, game->mapinfo.initial_posX, game->mapinfo.initial_posY);
+	printf("Initial Position: %c at (%d, %d)\n", game->mapinfo.initial_position, game->mapinfo.initial_pos_x, game->mapinfo.initial_pos_y);
 	printf("Map Width: %d, i: %d\n", game->mapinfo.map_width, game->mapinfo.i);
 
 	if (game->mapinfo.content)

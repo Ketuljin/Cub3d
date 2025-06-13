@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 12:06:25 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/12 18:27:54 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/13 16:40:10 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,19 @@ void	init_map(t_map *map)
 	map->floor = NULL;
 	map->ceiling = NULL;
 	map->floor_color = -1;
-	map->ceiling_color = -1; 
+	map->ceiling_color = -1;
 	map->valid_content = true;
 	map->map_width = 0;
 	map->initial_position = '1';
-	map->initial_posX = 0;
-	map->initial_posY = 0;
+	map->initial_pos_x = 0;
+	map->initial_pos_y = 0;
 	map->index = 0;
 	map->size = TEX_SIZE;
 	map->step = 0.0;
 	map->pos = 0.0;
 	map->x = 0;
 	map->y = 0;
-	map->sizeL = 0;
+	map->size_l = 0;
 	map->i = 0;
 	map->j = 0;
 }
@@ -70,7 +70,6 @@ void	verif_file(t_map *map)
 	if (!extention_texture(map->west, map) || access(map->west, R_OK) != 0)
 		print_err("Error/ West: No such file or directory\n", map);
 }
-
 
 static int	verif_floor_ceiling(char *color)
 {
@@ -115,7 +114,7 @@ static void	verif_useless_content(t_map *map, char *stock)
 {
 	int	i;
 	int	count_line;
-	int word;
+	int	word;
 
 	word = 0;
 	count_line = 0;
@@ -132,21 +131,20 @@ static void	verif_useless_content(t_map *map, char *stock)
 		}
 		i++;
 	}
-	//if (count_line > 6)
-	//	print_err("ERROR/ wrong input\n", map);
 }
 
 int	check_error(t_map *map, char *stock)
 {
-	if (map->floor == NULL && map->ceiling == NULL && map->north == NULL && map->south == NULL
-			&& map->east == NULL && map->west == NULL && stock[0] == '\0')
+	if (map->floor == NULL && map->ceiling == NULL && map->north == NULL
+		&& map->south == NULL && map->east == NULL && map->west == NULL
+		&& stock[0] == '\0')
 		return (print_err("ERROR/ Empty file\n", map), 1);
 	if (map->north == NULL)
 		return (print_err("ERROR/ North missing\n", map), 1);
 	if (map->south == NULL)
 		return (print_err("ERROR/ South missing\n", map), 1);
 	if (map->west == NULL)
-		return (print_err("ERROR/ West missing\n", map) ,1);
+		return (print_err("ERROR/ West missing\n", map), 1);
 	if (map->east == NULL)
 		return (print_err("ERROR/ East missing\n", map), 1);
 	if (map->floor == NULL)

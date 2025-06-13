@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:29:42 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/12 18:20:27 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/13 16:26:15 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	key_press_handle(int key, t_game *game)
 		game->player.move_y = -1;
 	if (key == XK_d)
 		game->player.move_x = 1;
-	return(0);
+	return (0);
 }
 
 int	key_release_handle(int key, t_game *game)
@@ -46,25 +46,26 @@ int	key_release_handle(int key, t_game *game)
 	if (key == XK_s && game->player.move_y == -1)
 		game->player.move_y = 0;
 	if (key == XK_d && game->player.move_x == 1)
-		game->player.move_x -= 1;	
-	return(0);
+		game->player.move_x -= 1;
+	return (0);
 }
+
 void	listener(t_game *game)
 {
 	mlx_hook(game->win, 17, 0L, exit_game, game);
-	mlx_hook(game->win, 2, 1L<<0, key_press_handle, game);
-	mlx_hook(game->win, 3, 1L<<1, key_release_handle, game);
+	mlx_hook(game->win, 2, 1L << 0, key_press_handle, game);
+	mlx_hook(game->win, 3, 1L << 1, key_release_handle, game);
 }
 
 int	init_mlx(t_game *game)
 {
 	game->mlx = mlx_init();
 	if (!game->mlx)
-		return(FAILURE);
+		return (FAILURE);
 	game->win = mlx_new_window(game->mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3D");
 	if (!game->win)
-		return(FAILURE);
-	return(SUCCESS);
+		return (FAILURE);
+	return (SUCCESS);
 }
 
 char	*ft_strrchr(const char *string, int s)
@@ -114,7 +115,6 @@ int	main(int argc, char **argv)
 	int			fd;
 	t_game		game;
 
-	
 	fd = 0;
 	if (argc != 2)
 	{
@@ -134,26 +134,18 @@ int	main(int argc, char **argv)
 		debug_display_mapinfo(&game);
 		if (game.mapinfo.valid_content == false)
 		{
-			//free_all(&game.mapinfo);
 			free_game(&game);
 			return (1);
 		}
-		//free_all(&game.mapinfo);
-		//free_game(&game);
-		// init_content(&game.mapinfo, fd);
 	}
 	init_game(&game);
 	init_player_direction(&game.player, &game.mapinfo);
-	//debug_display_data(&game);
-	if(init_mlx(&game) == FAILURE)
+	if (init_mlx(&game) == FAILURE)
 		return (FAILURE);
 	init_textutes(&game);
-	
-	
 	render_raycast(&game);
 	listener(&game);
-	//print_game_state(&game); // DELETE THIS - NEED FOR TEST
 	mlx_loop_hook(game.mlx, render, &game);
 	mlx_loop(game.mlx);
-	return(SUCCESS);
+	return (SUCCESS);
 }

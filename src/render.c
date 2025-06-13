@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 11:25:17 by rureshet          #+#    #+#             */
-/*   Updated: 2025/06/09 13:46:15 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/13 16:39:19 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static bool	is_valid_pos(t_game *game, double x, double y)
 {
 	if (x < 1.25 || x >= game->mapinfo.map_width - 1.25)
 		return (false);
-	if (y < 1.25 || y >= game->mapinfo.sizeL - 1.25)
+	if (y < 1.25 || y >= game->mapinfo.size_l - 1.25)
 		return (false);
 	if (game->mapinfo.content[(int)y][(int)x] == '0')
 		return (true);

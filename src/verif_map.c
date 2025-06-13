@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 11:20:28 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/12 18:15:39 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/13 16:39:19 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,15 @@ static void	verif_content(t_map *map)
 
 	i = 0;
 	l = 0;
-	if (map->sizeL <= 2)
+	if (map->size_l <= 2)
 		print_err("ERROR/ Map too small\n", map);
-	while (l < map->sizeL-1)
+	while (l < map->size_l - 1)
 	{
 		while (map->content[l][i] != '\0')
 		{
 			if (!get_content(map->content[l][i], map, l, i))
-				print_err("ERROR/ In your map you can only have : 10SWEN\n", map);
+				print_err("ERROR/ In your map you can only have : 10SWEN\n",
+					map);
 			i++;
 		}
 		l++;
@@ -41,8 +42,7 @@ static void	verif_wall(t_map *map)
 
 	y = 0;
 	i = 0;
-
-	while (y < map->sizeL - 1)
+	while (y < map->size_l - 1)
 	{
 		while (map->content[y][i])
 		{
@@ -57,7 +57,6 @@ static void	verif_wall(t_map *map)
 		i = 0;
 		y++;
 	}
-	
 }
 
 void	last_map_content(t_map *map)
@@ -67,11 +66,12 @@ void	last_map_content(t_map *map)
 
 	j = 0;
 	i = 0;
-	while (map->sizeL > j)
+	while (map->size_l > j)
 	{
 		while (map->content[j][i])
 		{
-			if (map->content[j][i] != '\t' && map->content[j][i] != ' ' && map->content[j][i] != '\n')
+			if (map->content[j][i] != '\t' && map->content[j][i] != ' '
+				&& map->content[j][i] != '\n')
 			{
 				map->i = i;
 				map->j = j;
@@ -87,8 +87,8 @@ void	last_map_content(t_map *map)
 void	empty_line(t_map *map)
 {
 	int	x;
-	int empty;
-	int y;
+	int	empty;
+	int	y;
 
 	y = 0;
 	empty = 0;
@@ -97,7 +97,8 @@ void	empty_line(t_map *map)
 	{
 		while (map->content[y][x] != '\0')
 		{
-			if (map->content[y][x] !=  ' ' && map->content[y][x] != '\n' && map->content[y][x] != '\t')
+			if (map->content[y][x] != ' ' && map->content[y][x] != '\n'
+				&& map->content[y][x] != '\t')
 				empty = 1;
 			x++;
 		}
