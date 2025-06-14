@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 18:24:45 by rureshet          #+#    #+#             */
-/*   Updated: 2025/06/13 16:15:53 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/14 12:52:45 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,12 @@ void	render_frame(t_game *game)
 	}
 	mlx_put_image_to_window(game->mlx, game->win, image.img, 0, 0);
 	mlx_destroy_image(game->mlx, image.img);
+}
+
+void	render_raycast(t_game *game)
+{
+	init_texture_pixels(game);
+	init_ray(&game->ray);
+	raycasting(&game->player, game);
+	render_frame(game);
 }

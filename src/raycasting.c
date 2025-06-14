@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 10:59:59 by rureshet          #+#    #+#             */
-/*   Updated: 2025/06/13 16:39:19 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/14 12:53:24 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,12 +113,4 @@ int	raycasting(t_player *player, t_game *game)
 		x++;
 	}
 	return (SUCCESS);
-}
-
-void	render_raycast(t_game *game)
-{
-	init_texture_pixels(game);
-	init_ray(&game->ray);
-	raycasting(&game->player, game);
-	render_frame(game);
 }

@@ -6,11 +6,38 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 11:04:52 by rureshet          #+#    #+#             */
-/*   Updated: 2025/06/13 16:40:10 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/14 13:32:52 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+void	init_map(t_map *map)
+{
+	map->content = NULL;
+	map->north = NULL;
+	map->east = NULL;
+	map->south = NULL;
+	map->west = NULL;
+	map->floor = NULL;
+	map->ceiling = NULL;
+	map->floor_color = -1;
+	map->ceiling_color = -1;
+	map->valid_content = true;
+	map->map_width = 0;
+	map->initial_position = '1';
+	map->initial_pos_x = 0;
+	map->initial_pos_y = 0;
+	map->index = 0;
+	map->size = TEX_SIZE;
+	map->step = 0.0;
+	map->pos = 0.0;
+	map->x = 0;
+	map->y = 0;
+	map->size_l = 0;
+	map->i = 0;
+	map->j = 0;
+}
 
 void	init_img_zero(t_img *img)
 {

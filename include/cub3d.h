@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:08:35 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/13 16:40:58 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/14 13:38:44 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct s_map
 	char	*floor;
 	long	floor_color;
 	char	*ceiling;
+	long	ceiling_color;
 	char	initial_position;
 	int		initial_pos_x;
 	int		initial_pos_y;
@@ -181,15 +182,18 @@ void	search_for_east(t_map *map, char *stock);
 void	search_for_texture(t_map *map, char *stock);
 
 /*   init_content.c */
-void	init_map(t_map *map);
 void	init_content(t_map *map, int fd);
 
 /* init_data.c */
+void	init_map(t_map *map);
 void	init_img_zero(t_img *img);
 void	init_ray(t_ray *ray);
 void	init_player(t_player *player, t_map *map);
-void	init_map(t_map *mapinfo);
 void	init_game(t_game *game);
+
+/* init_mlx.c */
+void	listener(t_game *game);
+int		init_mlx(t_game *game);
 
 /*   init_player_dir.c */
 void	init_player_direction(t_player *player, t_map *map);
@@ -206,10 +210,10 @@ int		player_rotate(t_game *game, double rotdir);
 
 /* raycasting.c */
 int		raycasting(t_player *player, t_game *game);
-void	render_raycast(t_game *game);
 
 /*   render_frame.c */
 void	render_frame(t_game *game);
+void	render_raycast(t_game *game);
 
 /*   render_texture.c   */
 void	init_textutes(t_game *game);
@@ -219,7 +223,12 @@ int		validate_move(t_game *game, double new_x, double new_y);
 int		render(t_game *game);
 
 /*   stock_texture.c */
+int		skip_spaces_newlines(char *stock, int i);
 char	*stock_texture(char *stock, int i, t_map *map);
+
+/*   verif_file.c */
+int		check_error(t_map *map, char *stock);
+void	verif_file(t_map *map);
 
 /*   verif_map_utils.c */
 void	empty_line(t_map *map);

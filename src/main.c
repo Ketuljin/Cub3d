@@ -6,72 +6,16 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:29:42 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/13 16:26:15 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/14 13:11:28 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int	key_press_handle(int key, t_game *game)
-{
-	if (key == XK_Escape)
-		exit_game(game);
-	if (key == XK_Left)
-		game->player.rotate -= 1;
-	if (key == XK_Right)
-		game->player.rotate += 1;
-	if (key == XK_w)
-		game->player.move_y = 1;
-	if (key == XK_a)
-		game->player.move_x = -1;
-	if (key == XK_s)
-		game->player.move_y = -1;
-	if (key == XK_d)
-		game->player.move_x = 1;
-	return (0);
-}
-
-int	key_release_handle(int key, t_game *game)
-{
-	if (key == XK_Escape)
-		exit_game(game);
-	if (key == XK_Left && game->player.rotate <= 1)
-		game->player.rotate = 0;
-	if (key == XK_Right && game->player.rotate >= -1)
-		game->player.rotate = 0;
-	if (key == XK_w && game->player.move_y == 1)
-		game->player.move_y = 0;
-	if (key == XK_a && game->player.move_x == -1)
-		game->player.move_x += 1;
-	if (key == XK_s && game->player.move_y == -1)
-		game->player.move_y = 0;
-	if (key == XK_d && game->player.move_x == 1)
-		game->player.move_x -= 1;
-	return (0);
-}
-
-void	listener(t_game *game)
-{
-	mlx_hook(game->win, 17, 0L, exit_game, game);
-	mlx_hook(game->win, 2, 1L << 0, key_press_handle, game);
-	mlx_hook(game->win, 3, 1L << 1, key_release_handle, game);
-}
-
-int	init_mlx(t_game *game)
-{
-	game->mlx = mlx_init();
-	if (!game->mlx)
-		return (FAILURE);
-	game->win = mlx_new_window(game->mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3D");
-	if (!game->win)
-		return (FAILURE);
-	return (SUCCESS);
-}
-
 char	*ft_strrchr(const char *string, int s)
 {
-	size_t		i;
-	char		*t;
+	size_t	i;
+	char	*t;
 
 	t = NULL;
 	i = 0;
@@ -110,34 +54,36 @@ int	check_name(char *argv)
 	return (fd);
 }
 
-int	main(int argc, char **argv)
+int	parsing(int argc, char **argv, t_game *game)
 {
-	int			fd;
-	t_game		game;
+	int	fd;
 
 	fd = 0;
 	if (argc != 2)
-	{
-		printf("Error/ You need one argument: a file.cub\n");
-		return (1);
-	}
+		return (printf("Error/ You need one argument: a file.cub\n"), 1);
 	else
 	{
 		fd = check_name(argv[1]);
 		if (fd <= 0)
+			return (printf("You have to give a file.cub\n"), 1);
+		init_game(game);
+		init_content(&game->mapinfo, fd);
+		debug_display_mapinfo(game);
+		if (game->mapinfo.valid_content == false)
 		{
-			printf("You have to give a file.cub\n");
-			return (1);
-		}
-		init_game(&game);
-		init_content(&game.mapinfo, fd);
-		debug_display_mapinfo(&game);
-		if (game.mapinfo.valid_content == false)
-		{
-			free_game(&game);
+			free_game(game);
 			return (1);
 		}
 	}
+	return (0);
+}
+
+int	main(int argc, char **argv)
+{
+	t_game		game;
+
+	if (parsing(argc, argv, &game) == 1)
+		return (FAILURE);
 	init_game(&game);
 	init_player_direction(&game.player, &game.mapinfo);
 	if (init_mlx(&game) == FAILURE)
