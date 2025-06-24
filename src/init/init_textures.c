@@ -6,11 +6,11 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 16:51:10 by rureshet          #+#    #+#             */
-/*   Updated: 2025/06/13 16:29:47 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/24 14:25:02 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 static void	get_texture_index(t_game *game, t_ray *ray)
 {

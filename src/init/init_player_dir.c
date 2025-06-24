@@ -6,11 +6,11 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 13:03:04 by rureshet          #+#    #+#             */
-/*   Updated: 2025/06/14 12:59:31 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/24 14:24:58 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 static void	init_player_direction_ns(t_player *player)
 {

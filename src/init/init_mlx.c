@@ -6,11 +6,11 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 13:10:48 by rureshet          #+#    #+#             */
-/*   Updated: 2025/06/14 13:27:38 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/24 14:24:54 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 static int	key_press_handle(int key, t_game *game)
 {

@@ -6,11 +6,11 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 10:27:52 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/06 17:34:25 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/24 14:26:34 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 char	*ft_strdup(const char *src )
 {

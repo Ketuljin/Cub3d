@@ -6,11 +6,11 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 13:57:09 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/14 12:51:23 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/24 14:25:21 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 int	skip_spaces_newlines(char *stock, int i)
 {

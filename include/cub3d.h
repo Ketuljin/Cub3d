@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:08:35 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/14 13:38:44 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/24 13:59:53 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -247,6 +247,5 @@ void	debug_display_data( t_game *data);
 char	*ft_strrchr(const char *string, int s);
 char	value_pos(t_map *map, int y, int i);
 void	free_malloc(char **stockf, int l);
-void	debug_display_mapinfo( t_game *data);
 char	*stock_color(char *stock, int i, t_map *map);
 #endif

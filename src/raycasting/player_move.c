@@ -6,11 +6,11 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 12:40:27 by rureshet          #+#    #+#             */
-/*   Updated: 2025/06/13 16:22:11 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/24 14:25:46 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 static int	player_move_forward(t_game *game)
 {

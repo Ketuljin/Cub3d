@@ -6,11 +6,11 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 12:47:33 by rureshet          #+#    #+#             */
-/*   Updated: 2025/06/14 12:48:02 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/24 14:25:16 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 static char	*copy_color(char *stock, int start, int len)
 {

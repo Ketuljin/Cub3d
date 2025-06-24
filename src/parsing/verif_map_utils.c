@@ -6,11 +6,11 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 14:13:43 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/13 16:40:10 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/24 14:25:30 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 char	value_pos(t_map *map, int y, int i)
 {

@@ -6,11 +6,11 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 15:03:46 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/12 16:52:40 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/24 14:25:13 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 static void	search_for_floor(t_map *map, char *stock)
 {

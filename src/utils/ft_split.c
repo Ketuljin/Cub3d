@@ -6,11 +6,11 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 11:26:05 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/11 12:38:05 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/24 14:26:23 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 static size_t	countword(char const *s, char c)
 {

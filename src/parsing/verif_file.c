@@ -6,11 +6,11 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 13:35:19 by rureshet          #+#    #+#             */
-/*   Updated: 2025/06/14 13:39:02 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/24 14:25:25 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 int	check_error(t_map *map, char *stock)
 {
