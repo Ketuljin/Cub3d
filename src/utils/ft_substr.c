@@ -6,11 +6,11 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 08:05:49 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/11 12:29:38 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/24 14:41:48 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {

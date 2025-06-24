@@ -6,11 +6,11 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 18:24:45 by rureshet          #+#    #+#             */
-/*   Updated: 2025/06/14 12:52:45 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/24 14:41:23 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 static void	init_image(t_game *game, t_img *img, int width, int height)
 {

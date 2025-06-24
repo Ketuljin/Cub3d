@@ -6,11 +6,11 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 15:40:59 by rureshet          #+#    #+#             */
-/*   Updated: 2025/06/13 16:15:07 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/24 14:41:26 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 static void	init_texture_image(t_game *game, t_img *img, char *path)
 {

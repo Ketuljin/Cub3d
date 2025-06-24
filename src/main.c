@@ -6,7 +6,7 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:29:42 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/15 14:14:54 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/24 14:44:28 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ int	parsing(int argc, char **argv, t_game *game)
 			return (printf("You have to give a file.cub\n"), 1);
 		init_game(game);
 		init_content(&game->mapinfo, fd);
-		debug_display_mapinfo(game);
 		if (game->mapinfo.valid_content == false)
 		{
 			free_game(game);

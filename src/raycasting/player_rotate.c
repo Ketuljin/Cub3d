@@ -6,11 +6,11 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 13:09:41 by rureshet          #+#    #+#             */
-/*   Updated: 2025/06/13 16:20:53 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/24 14:41:17 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 int	player_rotate(t_game *game, double rotdir)
 {

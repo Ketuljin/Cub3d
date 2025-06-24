@@ -6,11 +6,11 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 11:18:14 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/12 13:19:03 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/24 14:41:33 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 int	ft_atoi(const char *str)
 {

@@ -6,11 +6,11 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:52:38 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/11 12:52:20 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/24 14:41:57 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {

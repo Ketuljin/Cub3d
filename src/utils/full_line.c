@@ -6,11 +6,11 @@
 /*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 13:29:33 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/11 12:49:24 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/24 14:41:54 by rureshet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 static char	*ft_free(char *buffer, char *buf)
 {
