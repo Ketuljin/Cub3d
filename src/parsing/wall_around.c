@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   wall_around.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rureshet <rureshet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkerthe <jkerthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 11:12:14 by jkerthe           #+#    #+#             */
-/*   Updated: 2025/06/13 16:39:19 by rureshet         ###   ########.fr       */
+/*   Updated: 2025/06/24 13:06:28 by jkerthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+int	is_space(char c)
+{
+	if (c == '\t' || c == ' ')
+		return (0);
+	return (1);
+
+}
 
 static int	check_wall(t_map *map, int y, int i)
 {
@@ -19,7 +27,7 @@ static int	check_wall(t_map *map, int y, int i)
 	j = 0;
 	if (y >= map->j)
 		return (0);
-	while (map->content[y][j])
+	while (map->content[y][j] && is_space(map->content[y][j]))
 	{
 		if (j == i && map->content[y][j] == '1')
 			return (0);
@@ -40,7 +48,7 @@ static void	wall_vertical(t_map *map, int y, int i)
 
 	check = 0;
 	j = y;
-	while (y < map->size_l)
+	while (y < map->size_l && is_space(map->content[y][j]))
 	{
 		if (!check_wall(map, y, i))
 		{
@@ -49,7 +57,7 @@ static void	wall_vertical(t_map *map, int y, int i)
 		}
 		y++;
 	}
-	while (j >= 0)
+	while (j >= 0 && is_space(map->content[y][j]))
 	{
 		if (!check_wall(map, j, i))
 		{
@@ -78,7 +86,7 @@ static void	wall_horizontal(t_map *map, int y, int i)
 		}
 		i--;
 	}
-	while (map->content[y][j] != '\0')
+	while (map->content[y][j] != '\0' && is_space(map->content[y][j]))
 	{
 		if (map->content[y][j] == '1')
 		{
